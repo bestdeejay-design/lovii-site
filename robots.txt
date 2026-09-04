@@ -1,0 +1,7 @@
+# lovii-site — превью нового lovii.ru до Дня X.
+# Сайт закрыт от индексации, чтобы поиск не знал о превью раньше релиза.
+# На День X: убрать Disallow, вернуть sitemap и canonical lovii.ru.
+User-agent: *
+Disallow: /
+
+Sitemap: https://lovii.ru/sitemap.xml
