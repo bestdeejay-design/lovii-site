@@ -11,13 +11,34 @@
 
 ```
 /                 → lovii.ru/
-/klientam/        → lovii.ru/klientam/
+/clients/         → lovii.ru/clients/        (клиентам — URL только на английском)
 /business/        → lovii.ru/business/
 /partners/        → lovii.ru/partners/
 /ambassadors/     → lovii.ru/ambassadors/
 /investors/       → lovii.ru/investors/
 /404.html
 ```
+
+Транслит в URL запрещён (решение владельца): аудитории называются
+по-английски — `clients`, `business`, `partners`, `ambassadors`, `investors`.
+Страж: `scripts/check_lovii_site_paths.py` (падает, если транслит вернётся).
+
+## Пути — только относительные (урок релиза)
+
+Сайт должен работать ЛЮБОМ базовом пути: GitHub Pages превью —
+`/lovii-site/`, Домен X — корень `/`. Поэтому:
+
+- HTML генерируется с относительными путями от глубины страницы:
+  корень — `./assets/...`, секции — `../assets/...`;
+- корневые абсолютные пути (`/assets/...`) запрещены — на подпутине
+  GitHub Pages они ломаются (404 на стили/лого/скрипты);
+- `404.html` отдаётся на ЛЮБОЙ глубине, поэтому в нём динамический
+  `<base>`: скрипт первым элементом `<head>` определяет базу сайта
+  (`/lovii-site/` на превью, `/` на домене) — стили и ссылки работают
+  даже по адресу вида `/lovii-site/что-угодно/`;
+- приёмка: `scripts/check_lovii_site_paths.py` (запрет абсолютных путей,
+  резолв каждой ссылки в файл репо) + `scripts/smoke_lovii_site.py`
+  (консоль, темы, мобильный 390px, форма, скриншоты).
 
 ## Дизайн-система — «меняю в одном месте»
 
@@ -45,6 +66,8 @@
 1. DNS lovii.ru → GitHub Pages (или перенос содержимого в репо `lovii`).
 2. `robots.txt`: убрать `Disallow`, оставить `Sitemap: https://lovii.ru/sitemap.xml`.
 3. Снять `noindex` (генерация: `scripts/build_lovii_site.py`, флаг `--prod`).
-4. Подключить `assets/lovii.css` у существующего lovii.ru остаётся снапшотом —
+4. Проверить, что динамический `<base>` в 404.html перешёл на `/`
+   (детект `/lovii-site/` просто не сработает — правок не требует).
+5. Подключить `assets/lovii.css` у существующего lovii.ru остаётся снапшотом —
    синхронизация через lovii-design (`sync-lovii-css.py`, TARGETS уже включает lovii-site).
-5. Проверить OG-карточку и 404, перелогинить Search Console.
+6. Проверить OG-карточку и 404, перелогинить Search Console.

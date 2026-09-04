@@ -2,7 +2,7 @@
 <!-- Канонические адреса — для Дня X ( lovii.ru ). Превью закрыто robots.txt. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://lovii.ru/</loc><changefreq>weekly</changefreq><priority>1.0</priority><lastmod>2026-09-05</lastmod></url>
-  <url><loc>https://lovii.ru/klientam/</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-09-05</lastmod></url>
+  <url><loc>https://lovii.ru/clients/</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-09-05</lastmod></url>
   <url><loc>https://lovii.ru/business/</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-09-05</lastmod></url>
   <url><loc>https://lovii.ru/partners/</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-09-05</lastmod></url>
   <url><loc>https://lovii.ru/ambassadors/</loc><changefreq>monthly</changefreq><priority>0.8</priority><lastmod>2026-09-05</lastmod></url>
