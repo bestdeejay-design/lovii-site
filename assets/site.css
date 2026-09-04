@@ -525,3 +525,59 @@ html[data-theme="dark"] .form-err { color: var(--lv-pink); }
   body { background: #fff; color: #000; }
   .sec { padding: 24px 0; }
 }
+
+/* ---------- §18 Дорожная карта: хроника, план, журнал ---------- */
+.mt-12 { margin-top: 12px; }
+/* вертикальная хроника */
+.tl { position: relative; max-width: 780px; margin: 0 auto; padding-left: 40px; list-style: none; }
+.tl::before { content: ""; position: absolute; left: 10px; top: 8px; bottom: 8px; width: 2px; border-radius: 2px;
+  background: linear-gradient(180deg, var(--lv-pink), color-mix(in srgb, var(--lv-pink) 8%, transparent)); }
+.tl-item { position: relative; padding: 0 0 28px; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot { position: absolute; left: -40px; top: 0; width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--lv-card); border: 2px solid color-mix(in srgb, var(--lv-pink) 40%, transparent);
+  color: var(--lv-pink); box-shadow: var(--lv-shadow-soft); }
+.tl-dot .ico { width: 12px; height: 12px; }
+.tl-dot.done { background: var(--lv-pink); border-color: var(--lv-pink); color: #fff; }
+.tl-dot.now { background: var(--lv-pink); border-color: var(--lv-pink); color: #fff; }
+.tl-dot.now::after { content: ""; position: absolute; inset: -7px; border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--lv-pink) 35%, transparent); animation: rd-pulse 2.2s ease-out infinite; }
+@keyframes rd-pulse { 0% { transform: scale(.75); opacity: 1; } 70%, 100% { transform: scale(1.45); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .tl-dot.now::after { animation: none; } }
+.tl-date { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--lv-pink); background: var(--lv-soft-pink); border-radius: var(--lv-r-pill); padding: 3px 10px; }
+.tl-item h3 { margin: 10px 0 6px; font-size: 17px; font-weight: 700; color: var(--lv-ink); }
+.tl-item p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--lv-dim); }
+/* план по фазам */
+.phase-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin: 36px 0 14px; }
+.phase-head:first-of-type { margin-top: 0; }
+.phase-head h3 { margin: 0; font-size: 18px; color: var(--lv-ink); }
+.phase-head span { font-size: 13px; color: var(--lv-dim); }
+.ms { display: flex; gap: 14px; align-items: flex-start; padding: 18px; margin: 0 0 12px;
+  background: var(--lv-card); border: 1px solid var(--lv-line); border-radius: var(--lv-r-lg); box-shadow: var(--lv-shadow-soft); }
+.ms .ico-badge { flex: none; }
+.ms .ico-badge.dim { background: var(--lv-grey-soft); color: var(--lv-dim); }
+.ms-body { min-width: 0; }
+.ms-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 7px; }
+.ms-q { font-size: 12px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--lv-dim); }
+.ms-body h3 { margin: 0 0 5px; font-size: 16px; color: var(--lv-ink); }
+.ms-body p { margin: 0 0 10px; font-size: 14px; line-height: 1.6; color: var(--lv-dim); }
+.ms-proof { font-size: 13px; line-height: 1.55; color: var(--lv-ink); background: var(--lv-soft-pink);
+  border-radius: var(--lv-r-md); padding: 9px 12px; }
+/* журнал */
+.log-item { display: flex; gap: 12px; align-items: flex-start; padding: 15px 0; border-bottom: 1px solid var(--lv-line); }
+.log-item:last-child { border-bottom: 0; }
+.log-date { flex: none; width: 132px; font-size: 13px; font-weight: 800; color: var(--lv-dim); padding-top: 2px; }
+.log-tag { flex: none; }
+.log-tag.st-chip.live { border: 0; background: var(--lv-pink); color: #fff; font-weight: 800; }
+.log-item h3 { margin: 0 0 3px; font-size: 15px; color: var(--lv-ink); }
+.log-item p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--lv-dim); }
+@media (max-width: 640px) {
+  .log-item { flex-wrap: wrap; gap: 6px 10px; }
+  .log-date { width: auto; }
+  .ms { flex-direction: column; }
+  .tl { padding-left: 32px; }
+  .tl-dot { left: -32px; }
+  .tl::before { left: 6px; }
+}
