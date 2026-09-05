@@ -1,11 +1,12 @@
-/* СНАПШОТ LOVII UI из репо bestdeejay-design/lovii-design@9127184
+/* СНАПШОТ LOVII UI из репо bestdeejay-design/lovii-design@9a031f6
    Потребитель: lovii-site. НЕ РЕДАКТИРОВАТЬ ЗДЕСЬ.
+   Артефакт: lovii.css (полный файл ДС).
    Правки только в lovii-design: css/lovii-components.css или
    tokens/tokens.css → build-lovii-css.py → sync-lovii-css.py. */
 
 /* ============================================================
    LOVII UI v1.0.0 — ЕДИНЫЙ ФАЙЛ дизайн-системы «Лови»
-   Канон токенов: v1.11.0 · собрано 2026-09-04
+   Канон токенов: v1.11.0 · собрано 2026-09-05
    Провенанс снапшота (из какого коммита lovii-design взят файл)
    добавляется разносчиком — см. шапку файла на сайте-потребителе.
    ------------------------------------------------------------
@@ -14,6 +15,7 @@
      python3 tools/propagate.py --push
    Править здесь нельзя — правятся исходники слоёв:
      tokens/tokens.css            — токены, база, движение
+     tokens/compat-legacy.css     — легаси-алиасы (мост миграции)
      css/lovii-components.css     — компоненты
    Живой каталог компонентов: style-guide.html, examples/08.
    Правила: только var(--lv-*), классы только канонические.
@@ -258,6 +260,95 @@ input, textarea, select { font-family: inherit; }
 .lv-edge-fade {
   -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
   mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+}
+
+/* ══════════════ СЛОЙ A-COMPAT: ЛЕГАСИ-АЛИАСЫ ══════════════ */
+
+/* ------------------------------------------------------------
+   СЛОЙ A-COMPAT: легаси-алиасы (мост миграции)
+   ------------------------------------------------------------
+   Зачем: потребители, выросшие ДО канона --lv-* (витрина
+   lovii.mobiap.com и старые прототипы), используют короткие
+   имена --pink, --bg, --card… Эти алиасы связывают их с
+   каноническими токенами: правка значения в tokens.css
+   доезжает до легаси-кода без его правки.
+
+   ПРАВИЛА:
+   • только var(--lv-*) справа — никаких литералов (следит
+     check-sync);
+   • НОВЫЙ код алиасы не использует — только var(--lv-*);
+   • не удалять: легаси-потребители живут на снапшотах.
+
+   Полный список см. docs/05-theming.md.
+   ------------------------------------------------------------ */
+
+:root,
+[data-theme="light"] {
+  --pink: var(--lv-pink);
+  --pink-dark: var(--lv-pink-dark);
+  --tiffany: var(--lv-tiffany);
+  --gold: var(--lv-gold);
+  --sand: var(--lv-sand);
+  --ink: var(--lv-ink);
+  --dim: var(--lv-dim);
+  --surface: var(--lv-surface);
+  --line: var(--lv-line);
+  --line-2: var(--lv-line-2);
+  --soft-pink: var(--lv-soft-pink);
+  --mist-pink: var(--lv-mist-pink);
+  --soft-tiffany: var(--lv-soft-tiffany);
+  --soft-gold: var(--lv-soft-gold);
+  --sand-soft: var(--lv-sand-soft);
+  --grey-soft: var(--lv-grey-soft);
+  --gold-text: var(--lv-gold-text);
+  --tiffany-text: var(--lv-tiffany-text);
+  --green-text: var(--lv-green-text);
+  --green-soft: var(--lv-green-soft);
+  --bg: var(--lv-bg);
+  --page: var(--lv-page);
+  --card: var(--lv-card);
+  --glass: var(--lv-glass);
+  --on-brand: var(--lv-on-brand);
+  --hero-top: var(--lv-hero-top);
+  --kpi-soft: var(--lv-kpi-soft);
+  --hairline: var(--lv-hairline);
+  --ch-ink-a: var(--lv-ch-ink-a);
+  --ch-ink-b: var(--lv-ch-ink-b);
+  --toast-d: var(--lv-toast-d);
+}
+
+[data-theme="dark"] {
+  --pink: var(--lv-pink);
+  --pink-dark: var(--lv-pink-dark);
+  --tiffany: var(--lv-tiffany);
+  --gold: var(--lv-gold);
+  --sand: var(--lv-sand);
+  --ink: var(--lv-ink);
+  --dim: var(--lv-dim);
+  --surface: var(--lv-surface);
+  --line: var(--lv-line);
+  --line-2: var(--lv-line-2);
+  --soft-pink: var(--lv-soft-pink);
+  --mist-pink: var(--lv-mist-pink);
+  --soft-tiffany: var(--lv-soft-tiffany);
+  --soft-gold: var(--lv-soft-gold);
+  --sand-soft: var(--lv-sand-soft);
+  --grey-soft: var(--lv-grey-soft);
+  --gold-text: var(--lv-gold-text);
+  --tiffany-text: var(--lv-tiffany-text);
+  --green-text: var(--lv-green-text);
+  --green-soft: var(--lv-green-soft);
+  --bg: var(--lv-bg);
+  --page: var(--lv-page);
+  --card: var(--lv-card);
+  --glass: var(--lv-glass);
+  --on-brand: var(--lv-on-brand);
+  --hero-top: var(--lv-hero-top);
+  --kpi-soft: var(--lv-kpi-soft);
+  --hairline: var(--lv-hairline);
+  --ch-ink-a: var(--lv-ch-ink-a);
+  --ch-ink-b: var(--lv-ch-ink-b);
+  --toast-d: var(--lv-toast-d);
 }
 
 /* ══════════════════ СЛОЙ B: КОМПОНЕНТЫ ══════════════════ */
