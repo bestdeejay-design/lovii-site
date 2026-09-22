@@ -846,3 +846,17 @@ details.fp li { display: flex; align-items: baseline; gap: 10px; font-size: 14px
 html:not([data-theme="dark"]) .logo-dark-img,
 html[data-theme="light"] .logo-dark-img { display: none; }
 html[data-theme="dark"] .logo-light-img { display: none; }
+
+/* ---------- Полоса доверия: единый вид на чипах системы ----------
+   Раньше здесь смешивались обычный текст с иконками и системные чипы.
+   Теперь все пункты — чипы одной анатомии (24px, пилюля, нейтральный тон). */
+.trust-logos { gap: 8px; }
+.trust-logos > span {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 24px; padding: 0 10px; border-radius: var(--lv-r-pill);
+  background: var(--lv-surface); border: 1px solid var(--lv-line);
+  color: var(--lv-dim); font-size: 11px; font-weight: 600; white-space: nowrap;
+}
+.trust-logos > span b { color: var(--lv-ink); }
+.trust-logos > span .ico { width: var(--lv-icon-16); height: var(--lv-icon-16); color: var(--lv-dim); }
+.trust-logos .utm-badge { height: 24px; }
