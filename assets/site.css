@@ -778,7 +778,7 @@ details.fp li { display: flex; align-items: baseline; gap: 10px; font-size: 14px
 .pay-chip { position:relative; width:40px; height:30px; border-radius:7px; background: linear-gradient(135deg,color-mix(in srgb, var(--lv-gold) 62%, var(--lv-white)),var(--lv-gold) 60%,color-mix(in srgb, var(--lv-gold) 72%, var(--lv-ink))); }
 .pay-num { position:relative; margin-top:auto; margin-bottom:14px; font-size:18px; font-weight:700; letter-spacing:.12em; font-variant-numeric:tabular-nums; }
 .pay-bot { position:relative; display:flex; align-items:flex-end; gap:14px; }
-.pay-bot .lbl { display:block; font-size:8.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.55); }
+.pay-bot .lbl { display:block; font-size:10px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.55); }
 .pay-bot .val { display:block; margin-top:2px; font-size:12.5px; font-weight:700; }
 .pay-bal { margin-left:auto; text-align:right; }
 .pay-bal .val { font-size:16px; font-weight:800; color:var(--lv-gold); }
@@ -839,5 +839,10 @@ details.fp li { display: flex; align-items: baseline; gap: 10px; font-size: 14px
 .doc-item .name { font-size:13.5px; font-weight:700; }
 .doc-item .sub { font-size:11.5px; color:var(--lv-dim); }
 
-
-
+/* ---------- Логотип: светлая и тёмная версии ----------
+   Правило живёт у сайта, а не в снапшоте системы: канон с версии 1.16 упаковывает базу
+   в @layer, а стили сайта вне слоёв — поэтому сначала показывались обе картинки,
+   логотип удваивался и на мобильных вылезал бургер. */
+html:not([data-theme="dark"]) .logo-dark-img,
+html[data-theme="light"] .logo-dark-img { display: none; }
+html[data-theme="dark"] .logo-light-img { display: none; }
