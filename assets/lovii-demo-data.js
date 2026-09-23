@@ -58,9 +58,9 @@ window.LOVII_DEMO = {
     tail:'4210 7755',
     formatted:'9643 9138 4210 7755',
     holder:'ALEXANDRA LOVII',
-    account:'LOVII PAY · 1250 ₽',
-    bal:1250,
-    rub:1250,
+    account:'LOVII PAY · 9 777 ₽',
+    bal:9777,
+    rub:9777,
     cardSkins:[
       { id:'pay', cls:'skin-pay', tag:'LOVII PAY', who:'выдаётся всем при регистрации' },
       { id:'pass', cls:'skin-pass', tag:'LOVII PASS', who:'премиум-скин по подписке Лови' },
