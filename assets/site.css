@@ -547,12 +547,12 @@ html[data-theme="dark"] .form-err { color: var(--lv-pink); }
 
 /* ---------- §18 Дорожная карта: хроника, план, журнал ---------- */
 .mt-12 { margin-top: 12px; }
-/* вертикальная хроника */
-.tl { position: relative; max-width: 780px; margin: 0 auto; padding-left: 40px; list-style: none; }
-.tl::before { content: ""; position: absolute; left: 10px; top: 8px; bottom: 8px; width: 2px; border-radius: 2px;
+/* вертикальная хроника (ol.tl — не конфликтует с пилюлями .tl из lovii.css) */
+ol.tl { position: relative; max-width: 780px; margin: 0 auto; padding-left: 40px; list-style: none; }
+ol.tl::before { content: ""; position: absolute; left: 10px; top: 8px; bottom: 8px; width: 2px; border-radius: 2px;
   background: linear-gradient(180deg, var(--lv-pink), color-mix(in srgb, var(--lv-pink) 8%, transparent)); }
-.tl-item { position: relative; padding: 0 0 28px; }
-.tl-item:last-child { padding-bottom: 0; }
+ol.tl .tl-item { position: relative; padding: 0 0 28px; display: list-item; }
+ol.tl .tl-item:last-child { padding-bottom: 0; }
 .tl-dot { position: absolute; left: -40px; top: 0; width: 22px; height: 22px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   background: var(--lv-card); border: 2px solid color-mix(in srgb, var(--lv-pink) 40%, transparent);
@@ -566,8 +566,8 @@ html[data-theme="dark"] .form-err { color: var(--lv-pink); }
 @media (prefers-reduced-motion: reduce) { .tl-dot.now::after { animation: none; } }
 .tl-date { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
   color: var(--lv-pink); background: var(--lv-soft-pink); border-radius: var(--lv-r-pill); padding: 3px 10px; }
-.tl-item h3 { margin: 10px 0 6px; font-size: 17px; font-weight: 700; color: var(--lv-ink); }
-.tl-item p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--lv-dim); }
+ol.tl .tl-item h3 { margin: 10px 0 6px; font-size: 17px; font-weight: 700; color: var(--lv-ink); }
+ol.tl .tl-item p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--lv-dim); }
 /* план по фазам */
 .phase-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin: 36px 0 14px; }
 .phase-head:first-of-type { margin-top: 0; }
@@ -596,9 +596,9 @@ html[data-theme="dark"] .form-err { color: var(--lv-pink); }
   .log-item { flex-wrap: wrap; gap: 6px 10px; }
   .log-date { width: auto; }
   .ms { flex-direction: column; }
-  .tl { padding-left: 32px; }
-  .tl-dot { left: -32px; }
-  .tl::before { left: 6px; }
+  ol.tl { padding-left: 32px; }
+  ol.tl .tl-dot { left: -32px; }
+  ol.tl::before { left: 6px; }
 }
 
 /* ---------- §19 Живое демо и продуктовые скриншоты (этап 2, Tasks 52-56) ---------- */

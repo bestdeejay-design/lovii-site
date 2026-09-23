@@ -935,13 +935,11 @@ html[data-theme="dark"] .theme-btn .tb-moon { display:none; }
    показывает оформление карты, повторный возвращает свой) */
 .tier-levels .tl { border:0; font-family:inherit; cursor:pointer; }
 .tier-levels .tl:focus-visible { outline:2px solid var(--lv-pink); outline-offset:2px; }
-.tl.pv { box-shadow:0 0 0 2px var(--lv-pink); }
-.pay-skin-note { margin-top:8px; font-size:11px; line-height:1.45; color:var(--lv-dim); }
-.pay-skin-note b { color:var(--lv-ink); }
-.tl { flex:1; display:inline-flex; align-items:center; justify-content:center; gap:4px; min-width:0; height:30px; padding:0 6px; border-radius:var(--lv-r-pill); background:var(--lv-surface); font-size:10px; font-weight:800; letter-spacing:.02em; color:var(--lv-dim); white-space:nowrap; overflow:hidden; }
-.tl .ico { width:11px; height:11px; flex-shrink:0; }
-.tl.done { color:var(--lv-ink); }
-.tl.cur { background:var(--lv-soft-gold); color:var(--lv-gold-text); }
+.tier-levels .tl { flex:1; display:inline-flex; align-items:center; justify-content:center; gap:4px; min-width:0; height:30px; padding:0 6px; border-radius:var(--lv-r-pill); background:var(--lv-surface); font-size:10px; font-weight:800; letter-spacing:.02em; color:var(--lv-dim); white-space:nowrap; overflow:hidden; }
+.tier-levels .tl .ico { width:11px; height:11px; flex-shrink:0; }
+.tier-levels .tl.done { color:var(--lv-ink); }
+.tier-levels .tl.cur { background:var(--lv-soft-gold); color:var(--lv-gold-text); }
+.tier-levels .tl.pv { box-shadow:0 0 0 2px var(--lv-pink); }
 .tier-row { display:flex; align-items:center; justify-content:space-between; gap:8px; }
 .tier-name { display:inline-flex; align-items:center; gap:6px; font-size:14.5px; font-weight:800; color:var(--lv-ink); }
 .tier-name .ico { width:15px; height:15px; color:var(--lv-gold); }
