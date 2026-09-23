@@ -349,7 +349,7 @@
     finMounts.forEach(function(el){
       var f = D.finance;
       if (!f) return;
-      el.innerHTML = '<div class=\"split-legend\" style=\"margin:0\"><span><i style=\"background:var(--lv-pink)\"></i><b>'+Math.round(f.commissionRate*100)+'%</b> комиссия</span><span><i style=\"background:var(--lv-tiffany)\"></i><b>'+Math.round(f.repPayout*100)+'%</b> представителю</span><span><i style=\"background:var(--lv-gold)\"></i><b>'+Math.round(f.ambPayout*100)+'%</b> амбассадору</span><span><i style=\"background:var(--lv-ink)\"></i>кэшбэк до 10%</span></div>';
+      el.innerHTML = '<div class=\"split-legend\" style=\"margin:0\"><span><i style=\"background:var(--lv-pink)\"></i><b>'+Math.round(f.commissionRate*100)+'%</b> нагрузка — покрывает:</span><span><i style=\"background:var(--lv-tiffany)\"></i>комплайнс</span><span><i style=\"background:var(--lv-ink)\"></i>банк-эквайринг</span><span><i style=\"background:var(--lv-gold)\"></i>ИТ-инфраструктура</span><span><i style=\"background:var(--lv-pink)\"></i>маркетинг сети</span><span><i style=\"background:var(--lv-dim)\"></i>отчётность</span></div>';
     });
   }
 
