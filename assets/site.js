@@ -260,7 +260,7 @@
     prodMounts.forEach(function(el){
       var limit = parseInt(el.getAttribute('data-limit')||'4',10);
       var list = (D.products||[]).slice(0,limit);
-      el.innerHTML = '<div class=\"grid g2\">'+ list.map(function(p){
+      el.innerHTML = '<div class="grid g3">'+ list.map(function(p){
         return '<div class=\"card\" style=\"padding:14px;display:flex;gap:12px;align-items:center\"><div style=\"width:52px;height:52px;border-radius:12px;background:var(--lv-surface);display:flex;align-items:center;justify-content:center;font-size:26px;flex:none\">'+ (p.emoji||'🛒')+'</div><div style=\"min-width:0;flex:1\"><div style=\"font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis\">'+p.name+'</div><div style=\"font-size:11px;color:var(--lv-dim)\">'+ (p.storeName||'')+' · '+ (p.catLabel||'')+'</div><div style=\"margin-top:4px;display:flex;gap:6px;align-items:center\"><b style=\"font-size:13px\">'+ (p.price||0)+'₽</b>'+ (p.oldPrice?'<span style=\"font-size:11px;color:var(--lv-dim);text-decoration:line-through\">'+p.oldPrice+'₽</span>':'')+ (p.badge?'<span class=\"calc-badge\">'+p.badge+'</span>':'')+'</div></div></div>';
       }).join('')+'</div>';
     });
@@ -325,7 +325,7 @@
     // districts chips
     var distMounts = qsa('[data-demo=\"districts\"]');
     distMounts.forEach(function(el){
-      el.innerHTML = (D.districts||[]).map(function(d){ return '<span class=\"st-chip\"><span style=\"width:8px;height:8px;border-radius:50%;background:'+d.color+';display:inline-block\"></span>'+d.name+' <span style=\"opacity:.6\">'+d.stores+' точек</span></span>'; }).join(' ');
+      el.innerHTML = (D.districts||[]).map(function(d){ return '<span class="st-chip"><span style="width:8px;height:8px;border-radius:50%;background:'+d.color+';display:inline-block"></span>'+d.name+'</span>'; }).join(' ');
     });
     // investor stats
     var invMounts = qsa('[data-demo=\"investor-kpi\"]');
