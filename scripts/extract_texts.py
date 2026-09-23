@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT = Path('/Users/best/Projects/lovii-site')
 PAGES = [
     ('Главная', 'index.html'),
-    ('Клиентам', 'clients/index.html'),
+    ('Покупателям', 'clients/index.html'),
     ('Бизнесу', 'business/index.html'),
     ('Партнёрам', 'partners/index.html'),
     ('Амбассадорам', 'ambassadors/index.html'),
