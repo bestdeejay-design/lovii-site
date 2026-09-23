@@ -163,6 +163,7 @@
       var cntV = qs('[data-part-val="count"]', part);
       var avgV = qs('[data-part-val="avg"]', part);
       var cbV = qs('[data-part-val="cb"]', part);
+      var outGmv = qs('[data-part-out="gmv"]', part);
       var outPool = qs('[data-part-out="pool"]', part);
       var outIncome = qs('[data-part-out="income"]', part);
       var outCb = qs('[data-part-out="cb"]', part);
@@ -171,13 +172,15 @@
         var c = parseInt(cnt.value,10);
         var g = parseInt(avg.value,10);
         var cbp = parseInt(cb.value,10);
+        var gmvNet = g * c;
         var poolOne = g * 0.0684;
         var pool = poolOne * c;
         var income = pool * 0.40;
         var cbIncome = (g * cbp/100 * 0.10) * c;
-        if (cntV) cntV.textContent = c;
+        if (cntV) cntV.textContent = fmt(c);
         if (avgV) avgV.textContent = fmt(g)+' ₽';
         if (cbV) cbV.textContent = cbp+'%';
+        if (outGmv) outGmv.textContent = fmt(gmvNet)+' ₽';
         if (outPool) outPool.textContent = fmt(pool)+' ₽';
         if (outIncome) outIncome.textContent = fmt(income)+' ₽';
         if (outCb) outCb.textContent = fmt(cbIncome)+' ₽';
