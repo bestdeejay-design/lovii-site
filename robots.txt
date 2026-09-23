@@ -1,4 +1,4 @@
-# lovii.ru — открыто для индексации (Day X)
+# lovii.ru — открыто для индексации
 User-agent: *
 Allow: /
 
