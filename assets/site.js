@@ -270,15 +270,43 @@
         return '<div class=\"promo-card-demo tone-'+ (pr.tone||'pink')+'\"><div style=\"font-size:13px;font-weight:800\">'+pr.title+'</div><div style=\"font-size:12px;color:var(--lv-dim);margin-top:4px\">'+pr.desc+'</div><div style=\"margin-top:8px;display:flex;gap:6px\"><span class=\"calc-badge\">'+pr.tag+'</span><span class=\"calc-badge\" style=\"background:var(--lv-card)\">'+pr.code+'</span></div></div>';
       }).join('')+'</div>';
     });
-    // paycard
+    // paycard — клик: 360°-разворот со сменой скина (PAY → PASS → VIP → BIZ)
     var payMounts = qsa('[data-demo=\"paycard\"]');
     payMounts.forEach(function(el){
       var pay = D.pay;
-      if (!pay) return;
-      var skin = el.getAttribute('data-skin')||'pay';
-      el.innerHTML = '<div class=\"pay-stage\"><div class=\"pay-tilt\"><button class=\"paycard skin-'+skin+'\" type=\"button\" aria-label=\"LOVII PAY карта\" data-flip><div class=\"pay-face pay-front\"><span class=\"pay-sheen\" aria-hidden=\"true\"></span><div class=\"pay-top\"><span class=\"pay-brand\">LOVII · PAY</span><span class=\"pay-chip\" aria-hidden=\"true\"></span></div><div class=\"pay-num\">'+pay.formatted+'</div><div class=\"pay-bot\"><div><span class=\"lbl\">Держатель</span><span class=\"val\">'+pay.holder+'</span></div><div><span class=\"lbl\">Баланс баллов</span><span class=\"val\">'+ (pay.bal||0).toLocaleString('ru-RU')+'</span></div><div class=\"pay-bal\"><span class=\"lbl\">Рубли</span><span class=\"val\">'+ (pay.rub||0).toLocaleString('ru-RU')+' ₽</span></div></div></div><div class=\"pay-face pay-back\"><div style=\"padding:14px 18px 10px;display:flex;justify-content:space-between;align-items:center\"><span style=\"font-size:12px;font-weight:800;letter-spacing:.1em\">LOVII PAY</span><span style=\"font-size:10px;opacity:.6\">'+pay.account+'</span></div><div style=\"height:38px;background:#0a0a0a;margin:4px 0 14px\"></div><div style=\"padding:0 18px;display:flex;gap:12px;align-items:flex-end\"><div style=\"flex:1\"><div style=\"font-size:8px;opacity:.55;text-transform:uppercase;letter-spacing:.08em\">Аккаунт</div><div style=\"font-size:12px;font-weight:700\">'+pay.account+'</div></div><div style=\"width:56px;height:36px;border-radius:6px;background:rgba(255,255,255,.9)\"></div></div><div style=\"margin-top:auto;padding:12px 18px 16px;display:flex;gap:8px\"><span class=\"calc-badge\">'+(pay.tiers[0]?.name||'PASS')+' '+ (pay.tiers[0]?.fee||0)+'₽</span><span class=\"calc-badge\">'+(pay.tiers[1]?.name||'VIP')+'</span></div></div></button></div></div><div class=\"calc-hint\" style=\"margin-top:8px\">Нажмите на карту — переворот. Скины: PAY / PASS / VIP / BIZ — как в демо.</div>';
-      var btn = el.querySelector('[data-flip]');
-      if (btn) btn.addEventListener('click', function(){ btn.classList.toggle('flipped'); track('paycard_flip', { skin: skin }); });
+      if (!pay || !pay.cardSkins || !pay.cardSkins.length) return;
+      var skins = pay.cardSkins;
+      var startId = el.getAttribute('data-skin')||'pay';
+      var idx = 0;
+      for (var i=0;i<skins.length;i++){ if (skins[i].id===startId){ idx=i; break; } }
+      var btn, capEl;
+      function labelOf(s){ return s.tag+' карта — нажмите, чтобы сменить скин'; }
+      function capOf(s){ return '<b>'+s.tag+'</b> — '+s.who+'. Нажмите на карту — следующий скин.'; }
+      function applySkin(i){
+        idx = (i+skins.length)%skins.length;
+        var s = skins[idx];
+        for (var k=0;k<skins.length;k++) btn.classList.remove(skins[k].cls);
+        btn.classList.add(s.cls);
+        btn.setAttribute('aria-label', labelOf(s));
+        var brand = btn.querySelector('.pay-brand');
+        if (brand) brand.textContent = s.tag.replace(' ',' · ');
+        if (capEl) capEl.innerHTML = capOf(s);
+      }
+      var cur = skins[idx];
+      el.innerHTML = '<div class=\"pay-stage\"><div class=\"pay-tilt\"><button class=\"paycard '+cur.cls+'\" type=\"button\" aria-label=\"'+labelOf(cur)+'\" data-card><div class=\"pay-face pay-front\"><span class=\"pay-sheen\" aria-hidden=\"true\"></span><div class=\"pay-top\"><span class=\"pay-brand\">'+cur.tag.replace(' ',' · ')+'</span><span class=\"pay-chip\" aria-hidden=\"true\"></span></div><div class=\"pay-num\">'+pay.formatted+'</div><div class=\"pay-bot\"><div><span class=\"lbl\">Держатель</span><span class=\"val\">'+pay.holder+'</span></div><div><span class=\"lbl\">Баланс баллов</span><span class=\"val\">'+ (pay.bal||0).toLocaleString('ru-RU')+'</span></div><div class=\"pay-bal\"><span class=\"lbl\">Рубли</span><span class=\"val\">'+ (pay.rub||0).toLocaleString('ru-RU')+' ₽</span></div></div></div><div class=\"pay-face pay-back\" aria-hidden=\"true\"><span class=\"pay-back-logo\">LOVII</span></div></button></div><div class=\"pay-skin-note\" data-skin-cap>'+capOf(cur)+'</div></div>';
+      btn = el.querySelector('[data-card]');
+      capEl = el.querySelector('[data-skin-cap]');
+      if (btn) btn.addEventListener('click', function(){
+        if (btn.dataset.busy) return;
+        var next = (idx+1)%skins.length;
+        track('paycard_skin', { skin: skins[next].id });
+        var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduced){ applySkin(next); return; }
+        btn.dataset.busy = '1';
+        btn.classList.add('spinning');
+        setTimeout(function(){ applySkin(next); }, 350);
+        setTimeout(function(){ btn.classList.remove('spinning'); delete btn.dataset.busy; }, 720);
+      });
     });
     // tx list
     var txMounts = qsa('[data-demo=\"tx\"]');
@@ -318,7 +346,7 @@
     finMounts.forEach(function(el){
       var f = D.finance;
       if (!f) return;
-      el.innerHTML = '<div class=\"split-legend\" style=\"margin:0\"><span><i style=\"background:var(--lv-pink)\"></i><b>'+Math.round(f.commissionRate*100)+'%</b> комиссия</span><span><i style=\"background:var(--lv-tiffany)\"></i><b>'+Math.round(f.repPayout*100)+'%</b> представителю</span><span><i style=\"background:var(--lv-gold)\"></i><b>'+Math.round(f.ambPayout*100)+'%</b> амбассадору</span><span><i style=\"background:var(--lv-ink)\"></i>кешбэк до 10%</span></div>';
+      el.innerHTML = '<div class=\"split-legend\" style=\"margin:0\"><span><i style=\"background:var(--lv-pink)\"></i><b>'+Math.round(f.commissionRate*100)+'%</b> комиссия</span><span><i style=\"background:var(--lv-tiffany)\"></i><b>'+Math.round(f.repPayout*100)+'%</b> представителю</span><span><i style=\"background:var(--lv-gold)\"></i><b>'+Math.round(f.ambPayout*100)+'%</b> амбассадору</span><span><i style=\"background:var(--lv-ink)\"></i>кэшбэк до 10%</span></div>';
     });
   }
 

@@ -68,17 +68,17 @@ window.LOVII_DEMO = {
       { id:'biz', cls:'skin-biz', tag:'LOVII BUSINESS', who:'по умолчанию для всех МСП' },
     ],
     tiers:[
-      { id:'pay', name:'LOVII PAY', need:0, cond:'базовый уровень', fee:0, perks:['Кэшбек 1:1','Оплата QR','Вывод СБП'] },
+      { id:'pay', name:'LOVII PAY', need:0, cond:'базовый уровень', fee:0, perks:['Кэшбэк 1:1','Оплата QR','Вывод СБП'] },
       { id:'pass', name:'LOVII PASS', need:0, cond:'по подписке Лови', fee:199, perks:['Статус представителя','Вывод 0% от 3 000 ₽','Мерч','Мероприятия'] },
       { id:'vip', name:'LOVII VIP', need:300000, cond:'оборот от 300 000 ₽ в месяц', fee:0, perks:['Лимитированный мерч','Приоритет','Персональные скидки'] },
     ],
     tx:[
-      { name:'Пекарня «Слойка»', emoji:'🥐', type:'in', sum:38, unit:'₽', time:'сегодня 14:32', method:'кэшбек', d:0, kind:'in', title:'Кэшбек · Пекарня «Слойка»', note:'Слойка с вишней, 2 шт' },
+      { name:'Пекарня «Слойка»', emoji:'🥐', type:'in', sum:38, unit:'₽', time:'сегодня 14:32', method:'кэшбэк', d:0, kind:'in', title:'Кэшбэк · Пекарня «Слойка»', note:'Слойка с вишней, 2 шт' },
       { name:'Кофейня «Daily»', emoji:'☕', type:'buy', sum:-440, unit:'₽', time:'сегодня 09:15', method:'QR', d:0, kind:'buy', title:'Кофейня «Daily»', note:'Капучино ×2' },
       { name:'Бонус «Приведи друга»', emoji:'🎁', type:'in', sum:200, unit:'₽', time:'вчера', method:'бонус', d:1, kind:'in', title:'Бонус «Приведи друга»', note:'Марат по ссылке' },
       { name:'Цветы «Fresh»', emoji:'🌷', type:'out', sum:-250, unit:'баллов', time:'вчера', method:'списание', d:1, kind:'out', title:'Оплата баллами · Цветы «Fresh»', note:'Списано 250 баллов' },
       { name:'Вывод через СБП', emoji:'💸', type:'out', sum:-500, unit:'₽', time:'3 дня назад', method:'СБП', d:3, kind:'out', title:'Вывод через СБП', note:'Счёт •• 4567' },
-      { name:'Пиццерия «Forno»', emoji:'🍕', type:'in', sum:95, unit:'₽', time:'5 дней назад', method:'кэшбек', d:5, kind:'in', title:'Кэшбек · Пиццерия «Forno»', note:'Пицца 33 см' },
+      { name:'Пиццерия «Forno»', emoji:'🍕', type:'in', sum:95, unit:'₽', time:'5 дней назад', method:'кэшбэк', d:5, kind:'in', title:'Кэшбэк · Пиццерия «Forno»', note:'Пицца 33 см' },
     ],
     privileges:[
       { icon:'gift', title:'Мерч Лови', sub:'Эксклюзивные дропы', tone:'pink' },
