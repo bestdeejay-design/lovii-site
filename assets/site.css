@@ -192,6 +192,9 @@ html[data-theme="dark"] .btn-soft { color: var(--lv-pink); }
 .btn-ghost-light:hover { border-color: var(--lv-on-brand); transform: translateY(-2px); }
 .btn-gold-solid { background: var(--lv-gold); color: var(--lv-ink); }
 .btn-gold-solid:hover { transform: translateY(-2px); filter: brightness(1.05); }
+/* светлые пилюли: фон не меняется в тёмной теме, текст фиксируем тёмным */
+html[data-theme="dark"] .btn-white,
+html[data-theme="dark"] .btn-gold-solid { color: var(--lv-ink-deep); }
 .btn-block { width: 100%; }
 
 /* Split-CTA: главная цель + врезанное живое демо (один визуальный блок) */
