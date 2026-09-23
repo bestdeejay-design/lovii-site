@@ -215,7 +215,7 @@
 **208. [p]** `foot-about` Цифровая платформа локальной экономики: витрина района, общая программа лояльности и честное распределение дохода.
 **209. [a]** (https://t.me/loviiru) TG
 **210. [a]** (https://vk.ru/loviiru) VK
-**211. [a]** (https://max.ru/channel_lovii) MAX
+**211. [a]** (https://max.ru/channel_lovii) Новости
 **212. [a]** (mailto:hello@lovii.ru) @
 **213. [h3]** Аудитории
 **214. [a]** (./clients/) Покупателям
@@ -420,7 +420,7 @@
 **158. [p]** `foot-about` Цифровая платформа локальной экономики: витрина района, общая программа лояльности и честное распределение дохода.
 **159. [a]** (https://t.me/loviiru) TG
 **160. [a]** (https://vk.ru/loviiru) VK
-**161. [a]** (https://max.ru/channel_lovii) MAX
+**161. [a]** (https://max.ru/channel_lovii) Новости
 **162. [a]** (mailto:hello@lovii.ru) @
 **163. [h3]** Аудитории
 **164. [a]** (../clients/) Покупателям
@@ -789,7 +789,7 @@
 **322. [p]** `foot-about` Цифровая платформа локальной экономики: витрина района, общая программа лояльности и честное распределение дохода.
 **323. [a]** (https://t.me/loviiru) TG
 **324. [a]** (https://vk.ru/loviiru) VK
-**325. [a]** (https://max.ru/channel_lovii) MAX
+**325. [a]** (https://max.ru/channel_lovii) Новости
 **326. [a]** (mailto:hello@lovii.ru) @
 **327. [h3]** Аудитории
 **328. [a]** (../clients/) Покупателям
@@ -1049,7 +1049,7 @@
 **213. [p]** `foot-about` Цифровая платформа локальной экономики: витрина района, общая программа лояльности и честное распределение дохода.
 **214. [a]** (https://t.me/loviiru) TG
 **215. [a]** (https://vk.ru/loviiru) VK
-**216. [a]** (https://max.ru/channel_lovii) MAX
+**216. [a]** (https://max.ru/channel_lovii) Новости
 **217. [a]** (mailto:hello@lovii.ru) @
 **218. [h3]** Аудитории
 **219. [a]** (../clients/) Покупателям
@@ -1278,7 +1278,7 @@
 **182. [p]** `foot-about` Цифровая платформа локальной экономики: витрина района, общая программа лояльности и честное распределение дохода.
 **183. [a]** (https://t.me/loviiru) TG
 **184. [a]** (https://vk.ru/loviiru) VK
-**185. [a]** (https://max.ru/channel_lovii) MAX
+**185. [a]** (https://max.ru/channel_lovii) Новости
 **186. [a]** (mailto:hello@lovii.ru) @
 **187. [h3]** Аудитории
 **188. [a]** (../clients/) Покупателям
@@ -1532,7 +1532,7 @@
 **207. [p]** `foot-about` Цифровая платформа локальной экономики: витрина района, общая программа лояльности и честное распределение дохода.
 **208. [a]** (https://t.me/loviiru) TG
 **209. [a]** (https://vk.ru/loviiru) VK
-**210. [a]** (https://max.ru/channel_lovii) MAX
+**210. [a]** (https://max.ru/channel_lovii) Новости
 **211. [a]** (mailto:hello@lovii.ru) @
 **212. [h3]** Аудитории
 **213. [a]** (../clients/) Покупателям
@@ -1925,7 +1925,7 @@
 **346. [p]** `foot-about` Цифровая платформа локальной экономики: витрина района, общая программа лояльности и честное распределение дохода.
 **347. [a]** (https://t.me/loviiru) TG
 **348. [a]** (https://vk.ru/loviiru) VK
-**349. [a]** (https://max.ru/channel_lovii) MAX
+**349. [a]** (https://max.ru/channel_lovii) Новости
 **350. [a]** (mailto:hello@lovii.ru) @
 **351. [h3]** Аудитории
 **352. [a]** (../clients/) Покупателям
@@ -1995,7 +1995,7 @@
 **23. [p]** `foot-about` Цифровая платформа локальной экономики: витрина района, общая программа лояльности и честное распределение дохода.
 **24. [a]** (https://t.me/loviiru) TG
 **25. [a]** (https://vk.ru/loviiru) VK
-**26. [a]** (https://max.ru/channel_lovii) MAX
+**26. [a]** (https://max.ru/channel_lovii) Новости
 **27. [a]** (mailto:hello@lovii.ru) @
 **28. [h3]** Аудитории
 **29. [a]** (./clients/) Покупателям
