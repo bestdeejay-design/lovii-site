@@ -101,6 +101,7 @@ jobs:
 
       - name: Rollback to tag
         working-directory: prod
+        run: |
           TAG="${{ github.event.inputs.tag }}"
           case "$TAG" in prod-*) ;; *) echo "::error::Тег должен начинаться с prod- (например prod-2026-09-24)"; exit 1;; esac
           git rev-parse -q --verify "refs/tags/$TAG" >/dev/null || { echo "::error::Тег $TAG не найден в прод-репо"; exit 1; }
