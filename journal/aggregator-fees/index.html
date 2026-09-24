@@ -1,26 +1,28 @@
 <!doctype html>
 <html lang="ru">
 <head>
+<script src="../../assets/counters.js" defer></script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112999617" style="position:absolute;left:-9999px;" alt="" /></div></noscript>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Сколько точка отдаёт агрегаторам — мнение предпринимателя — LOVII</title>
-<meta name="description" content="Я открыл точку в 2019 и думал, что агрегатор — спасение. Через год увидел цифры: до 450 ₽ с 1000 ₽ уходят площадке. Как я пересчитал нагрузку в LOVII (≤10%) и почему это не просто комиссия — это аренда клиента.">
+<title>Сколько точка отдаёт агрегаторам — LOVII</title>
+<meta name="description" content="Заказ 1 000 ₽ — до 450 ₽ площадке. Личный опыт пиццерии: комиссии 20–45%, аренда клиента и пересчёт нагрузки в LOVII — не более 10%.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://lovii.ru/journal/aggregator-fees/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="LOVII — журнал">
 <meta property="og:locale" content="ru_RU">
-<meta property="og:title" content="Сколько точка отдаёт агрегаторам — мнение предпринимателя — LOVII">
+<meta property="og:title" content="Сколько точка отдаёт агрегаторам — LOVII">
 <meta property="og:description" content="Мнение основателя: заказ 1000 ₽ → до 450 ₽ площадке. Сравнение 20–45% агрегаторов и ≤10% в LOVII. Как я сосчитал свою нагрузку и построил платформу.">
 <meta property="og:url" content="https://lovii.ru/journal/aggregator-fees/">
 <meta property="og:image" content="https://lovii.ru/og-image.png">
 <meta name="theme-color" content="#f64a8a">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="icon" href="../favicon.png" type="image/png">
-<link rel="apple-touch-icon" href="../lovii-icon-180.png">
-<link rel="manifest" href="../manifest.webmanifest">
-<link rel="stylesheet" href="../assets/lovii.css">
-<link rel="stylesheet" href="../assets/site.css">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../../lovii-icon-180.png">
+<link rel="manifest" href="../../manifest.webmanifest">
+<link rel="stylesheet" href="../../assets/lovii.css">
+<link rel="stylesheet" href="../../assets/site.css">
 <style>
 :root{--lv-ink:#171219;--lv-paper:#fff;--lv-soft:#faf7f4;--lv-line:#ece8e0;--lv-tiffany:#2ec4b6;--lv-pink:#f64a8a;--lv-text:#2e2933;--lv-muted:#6f6565;--lv-gold:#e6b23c;}
 .journal-article{max-width:720px;margin:0 auto;padding:48px 24px 96px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--lv-text);line-height:1.7;font-size:17.5px;}
@@ -49,14 +51,14 @@
 .journal-article .meta-row a{color:var(--lv-pink);text-decoration:none;font-weight:600;}
 @media(max-width:640px){.journal-article{padding:24px 20px 64px;font-size:16.5px;}.journal-article h1{font-size:28px;}.journal-article .pullquote{font-size:19px;padding:20px 22px;}.journal-article .cta-band{padding:28px 22px;}.journal-article h2{font-size:21px;}}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Сколько точка отдаёт агрегаторам?","acceptedAnswer":{"@type":"Answer","text":"Заказ на 1 000 ₽ — до 450 ₽ площадке. Комиссия агрегаторов 20–45%, нагрузка LOVII не более 10%."}},{"@type":"Question","name":"Что входит в 10% нагрузки LOVII?","acceptedAnswer":{"@type":"Answer","text":"Банк 3,16% по картам или 0,7% СБП + комиссия платформы. Всё остальное (витрина, касса 54-ФЗ, лояльность, представитель) уже включено."}},{"@type":"Question","name":"Есть ли абонентская плата?","acceptedAnswer":{"@type":"Answer","text":"Тариф СТАРТ — 0% и без абонентской платы до 30 000 ₽ или до конца следующего месяца."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Можно ли переехать с агрегатора без потери клиентов?","acceptedAnswer":{"@type":"Answer","text":"Да. В LOVII клиент привязан к точке, не к площадке. Чек и данные остаются у вас, баллы работают в районе."}},{"@type":"Question","name":"Что входит в 10% нагрузки LOVII?","acceptedAnswer":{"@type":"Answer","text":"Банк (3,16% по картам / 0,7% СБП) + комиссия платформы по тарифу. Сплит пула 40/40/20 не увеличивает нагрузку — это распределение дохода."}},{"@type":"Question","name":"Есть ли абонентская плата на старте?","acceptedAnswer":{"@type":"Answer","text":"Нет. СТАРТ — 0% до 30 000 ₽ или до конца следующего месяца. Без скрытых условий."}},{"@type":"Question","name":"Это гарантия доходности?","acceptedAnswer":{"@type":"Answer","text":"Нет. Мы не обещаем сроки и не гарантируем доход. Мы даём честную математику — и это всё."}}]}</script>
 </head>
-<body data-sprite="../assets/icons.svg">
+<body data-sprite="../../assets/icons.svg">
 <header class="site-header" style="position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:saturate(120%) blur(12px);border-bottom:1px solid var(--lv-line);">
 <div class="header-in" style="max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;">
-<a href="../" aria-label="LOVII — на главную" style="display:flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;color:var(--lv-ink);font-size:20px;letter-spacing:-0.03em;">LOVII <span style="color:var(--lv-pink);font-size:13px;letter-spacing:0.05em;font-weight:600;text-transform:uppercase;">Журнал</span></a>
-<nav aria-label="Статьи" style="display:flex;gap:20px;font-size:14px;font-weight:600;"><a href="../journal/aggregator-fees/" style="color:var(--lv-pink);">Комиссии</a><a href="../journal/fiscal-54fz/" style="color:var(--lv-text);">Касса</a><a href="../journal/cashback-vs-discount/" style="color:var(--lv-text);">Лояльность</a><a href="../journal/selfemployed-vs-ip/" style="color:var(--lv-text);">Налоги</a><a href="../journal/qr-onboarding/" style="color:var(--lv-text);">Запуск</a><a href="../journal/district-showcase/" style="color:var(--lv-text);">Район</a></nav>
-<a href="../business/" style="font-size:13px;padding:8px 14px;border-radius:8px;border:1.5px solid var(--lv-line);text-decoration:none;color:var(--lv-ink);font-weight:700;">Бизнесу →</a>
+<a href="../../" aria-label="LOVII — на главную" style="display:flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;color:var(--lv-ink);font-size:20px;letter-spacing:-0.03em;">LOVII <span style="color:var(--lv-pink);font-size:13px;letter-spacing:0.05em;font-weight:600;text-transform:uppercase;">Журнал</span></a>
+<nav aria-label="Статьи" style="display:flex;gap:20px;font-size:14px;font-weight:600;"><a href="../aggregator-fees/" style="color:var(--lv-pink);">Комиссии</a><a href="../fiscal-54fz/" style="color:var(--lv-text);">Касса</a><a href="../cashback-vs-discount/" style="color:var(--lv-text);">Лояльность</a><a href="../selfemployed-vs-ip/" style="color:var(--lv-text);">Налоги</a><a href="../qr-onboarding/" style="color:var(--lv-text);">Запуск</a><a href="../district-showcase/" style="color:var(--lv-text);">Район</a></nav>
+<a href="../../business/" style="font-size:13px;padding:8px 14px;border-radius:8px;border:1.5px solid var(--lv-line);text-decoration:none;color:var(--lv-ink);font-weight:700;">Бизнесу →</a>
 </div>
 </header>
 
@@ -104,7 +106,7 @@
 <div class="cta-band">
 <h3>Посчитай свою нагрузку — как я сделал это сам</h3>
 <p>Введите оборот и сравните: агрегатор (20–45%) против LOVII (≤10%). Без регистрации и без обязательств.</p>
-<a class="btn" href="../business/#calc">Открыть калькулятор →</a>
+<a class="btn" href="../../business/#calc">Открыть калькулятор →</a>
 </div>
 
 <section class="faq" aria-label="Частые вопросы">
@@ -132,18 +134,18 @@
 Это не статья из пресс-релиза и не маркетинговый текст от отдела продаж. Это запись от человека, который в 3 ночи смотрел на калькулятор и думал: «Я не хочу, чтобы моя точка была ареной для чужой платформы». LOVII — это способ жить честно: точка остаётся с клиентом, с чеком, с возможностью строить своё. Не ради денег. Ради того, что останется после нас.
 </div>
 
-<div class="meta-row" aria-label="Мета-данные статьи"><span>Автор — предприниматель, основатель LOVII</span> · <a href="../journal/">Журнал LOVII</a> · <a href="../business/#tarify">Тарифы в бизнесе</a> · <a href="../business/#calc">Калькулятор нагрузки</a></div>
+<div class="meta-row" aria-label="Мета-данные статьи"><span>Автор — предприниматель, основатель LOVII</span> · <a href="../">Журнал LOVII</a> · <a href="../../business/#tarify">Тарифы в бизнесе</a> · <a href="../../business/#calc">Калькулятор нагрузки</a></div>
 </article>
-<section aria-label="Читайте также" style="margin-top:48px;padding-top:24px;border-top:2px solid var(--lv-line);"><h2 style="font-size:20px;font-weight:800;margin-bottom:16px;">Читайте также</h2><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;"><a href="../aggregator-fees/" style="text-decoration:none;color:inherit;background:var(--lv-soft);border:1px solid var(--lv-line);border-radius:10px;padding:16px;display:block;"><b style="font-size:15px;color:var(--lv-ink);">Сколько точка отдаёт агрегаторам</b><p style="font-size:13px;color:var(--lv-muted);margin:4px 0 0;">Первая статья, личный опыт Думской 4 · 60 000 ₽ выручка · 40 000 ₽ агрегатору</p></a><a href="../fiscal-54fz/" style="text-decoration:none;color:inherit;background:var(--lv-soft);border:1px solid var(--lv-line);border-radius:10px;padding:16px;display:block;"><b style="font-size:15px;color:var(--lv-ink);">Касса 54-ФЗ для микробизнеса</b><p style="font-size:13px;color:var(--lv-muted);margin:4px 0 0;">Чек бьёт платформа, не вы · без покупки кассы</p></a><a href="../cashback-vs-discount/" style="text-decoration:none;color:inherit;background:var(--lv-soft);border:1px solid var(--lv-line);border-radius:10px;padding:16px;display:block;"><b style="font-size:15px;color:var(--lv-ink);">Кэшбэк или скидка</b><p style="font-size:13px;color:var(--lv-muted);margin:4px 0 0;">600 ₽ баллами — проверка арифметики · 15 ₽ разницы</p></a></div></section>
+<section aria-label="Читайте также" style="margin-top:48px;padding-top:24px;border-top:2px solid var(--lv-line);"><h2 style="font-size:20px;font-weight:800;margin-bottom:16px;">Читайте также</h2><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;"><a href="../left-aggregator/" style="text-decoration:none;color:inherit;background:var(--lv-soft);border:1px solid var(--lv-line);border-radius:10px;padding:16px;display:block;"><b style="font-size:15px;color:var(--lv-ink);">Почему я ушёл с агрегатора</b><p style="font-size:13px;color:var(--lv-muted);margin:4px 0 0;">Продолжение истории Думской 4 · как перевёз клиентов · нагрузка ≤10%</p></a><a href="../fiscal-54fz/" style="text-decoration:none;color:inherit;background:var(--lv-soft);border:1px solid var(--lv-line);border-radius:10px;padding:16px;display:block;"><b style="font-size:15px;color:var(--lv-ink);">Касса 54-ФЗ для микробизнеса</b><p style="font-size:13px;color:var(--lv-muted);margin:4px 0 0;">Чек бьёт платформа, не вы · без покупки кассы</p></a><a href="../cashback-vs-discount/" style="text-decoration:none;color:inherit;background:var(--lv-soft);border:1px solid var(--lv-line);border-radius:10px;padding:16px;display:block;"><b style="font-size:15px;color:var(--lv-ink);">Кэшбэк или скидка</b><p style="font-size:13px;color:var(--lv-muted);margin:4px 0 0;">600 ₽ баллами — проверка арифметики · 15 ₽ разницы</p></a></div></section>
 </main>
 
 <footer class="site-footer" style="background:var(--lv-ink);color:#d4cfc7;padding:48px 24px 24px;font-family:system-ui,sans-serif;font-size:14px;line-height:1.55;">
 <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;">
 <div><b style="color:#fff;font-size:18px;letter-spacing:-0.02em;">LOVII — журнал</b><p style="margin-top:8px;color:#b0a99c;">Мнения предпринимателей для МСП и реального микробизнеса. Только цифры из канона LOVII.</p></div>
-<div><b style="color:#fff;">Статьи</b><ul style="list-style:none;padding:0;margin:8px 0 0;display:flex;flex-direction:column;gap:6px;"><li><a href="../journal/aggregator-fees/" style="color:#d4cfc7;text-decoration:none;">Комиссии агрегаторов</a></li><li><a href="../journal/fiscal-54fz/" style="color:#d4cfc7;text-decoration:none;">Касса 54-ФЗ</a></li><li><a href="../journal/cashback-vs-discount/" style="color:#d4cfc7;text-decoration:none;">Кэшбэк или скидка</a></li><li><a href="../journal/selfemployed-vs-ip/" style="color:#d4cfc7;text-decoration:none;">Налоги</a></li><li><a href="../journal/qr-onboarding/" style="color:#d4cfc7;text-decoration:none;">Запуск за 5 минут</a></li><li><a href="../journal/district-showcase/" style="color:#d4cfc7;text-decoration:none;">Витрина района</a></li></ul></div>
-<div><b style="color:#fff;">Разделы сайта</b><ul style="list-style:none;padding:0;margin:8px 0 0;display:flex;flex-direction:column;gap:6px;"><li><a href="../clients/" style="color:#d4cfc7;text-decoration:none;">Покупателям</a></li><li><a href="../business/" style="color:#d4cfc7;text-decoration:none;">Бизнесу</a></li><li><a href="../partners/" style="color:#d4cfc7;text-decoration:none;">Партнёрам</a></li><li><a href="../roadmap/" style="color:#d4cfc7;text-decoration:none;">Дорожная карта</a></li></ul></div>
+<div><b style="color:#fff;">Статьи</b><ul style="list-style:none;padding:0;margin:8px 0 0;display:flex;flex-direction:column;gap:6px;"><li><a href="../aggregator-fees/" style="color:#d4cfc7;text-decoration:none;">Комиссии агрегаторов</a></li><li><a href="../fiscal-54fz/" style="color:#d4cfc7;text-decoration:none;">Касса 54-ФЗ</a></li><li><a href="../cashback-vs-discount/" style="color:#d4cfc7;text-decoration:none;">Кэшбэк или скидка</a></li><li><a href="../selfemployed-vs-ip/" style="color:#d4cfc7;text-decoration:none;">Налоги</a></li><li><a href="../qr-onboarding/" style="color:#d4cfc7;text-decoration:none;">Запуск за 5 минут</a></li><li><a href="../district-showcase/" style="color:#d4cfc7;text-decoration:none;">Витрина района</a></li></ul></div>
+<div><b style="color:#fff;">Разделы сайта</b><ul style="list-style:none;padding:0;margin:8px 0 0;display:flex;flex-direction:column;gap:6px;"><li><a href="../../clients/" style="color:#d4cfc7;text-decoration:none;">Покупателям</a></li><li><a href="../../business/" style="color:#d4cfc7;text-decoration:none;">Бизнесу</a></li><li><a href="../../partners/" style="color:#d4cfc7;text-decoration:none;">Партнёрам</a></li><li><a href="../../roadmap/" style="color:#d4cfc7;text-decoration:none;">Дорожная карта</a></li></ul></div>
 </div>
-<div style="max-width:1120px;margin:24px auto 0;padding-top:16px;border-top:1px solid #333;color:#7a7068;font-size:12px;text-align:center;">© 2026 LOVII · ООО «АКСИОМА» · Прогнозные показатели не являются гарантией доходности.</div>
+<div style="max-width:1120px;margin:24px auto 0;padding-top:16px;border-top:1px solid #333;color:#7a7068;font-size:12px;text-align:center;">© 2026 LOVII · ООО «АКСИОМА» · Фаундер: <a href="https://t.me/bestdeejay" target="_blank" rel="noopener" style="color:var(--lv-pink);font-weight:700">@bestdeejay</a> · Прогнозные показатели не являются гарантией доходности.</div>
 </footer>
 </body>
 </html>
