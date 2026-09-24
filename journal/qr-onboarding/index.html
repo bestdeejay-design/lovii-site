@@ -42,7 +42,10 @@
 .journal-article .faq{margin-top:48px;padding-top:24px;border-top:2px solid var(--lv-line);}
 .journal-article .faq h2{margin-top:0;font-size:22px;}
 .journal-article .faq-item{margin-bottom:20px;}
-.journal-article .faq-item q{font-weight:700;color:var(--lv-ink);display:block;margin-bottom:6px;}
+.journal-article .faq-item summary{font-weight:700;color:var(--lv-ink);cursor:pointer;margin-bottom:6px;}
+.faq-item summary::after{content:"+";color:var(--lv-pink);font-weight:800;font-size:18px;flex:none;}
+.faq-item[open] summary::after{content:"–";}
+.journal-article .faq-item p{margin:0;padding:0 20px 18px;}
 .journal-article .meta-row{display:flex;gap:16px;align-items:center;font-size:13px;color:var(--lv-muted);margin-top:32px;padding-top:16px;border-top:1px solid var(--lv-line);flex-wrap:wrap;}
 .journal-article .meta-row a{color:var(--lv-pink);text-decoration:none;font-weight:600;}
 @media(max-width:640px){.journal-article{padding:24px 20px 64px;font-size:16px;}.journal-article h1{font-size:28px;}.journal-article .cta-band{padding:24px 20px;}}
@@ -111,18 +114,9 @@
 
 <section class="faq" aria-label="Частые вопросы">
 <h2>Вопросы и ответы</h2>
-<div class="faq-item">
-<q>Можно ли подключиться без Интернета в точке?</q>
-<p>Для работы приложения нужно соединение, но подключение по QR и заполнение данных можно сделать с телефона. Витрина и касса работают через интернет-подключение.</p>
-</div>
-<div class="faq-item">
-<q>Нужно ли платить за подключение?</q>
-<p>Нет. Подключение бесплатное, тариф СТАРТ — 0% комиссии до 30 000 ₽ или до конца следующего месяца.</p>
-</div>
-<div class="faq-item">
-<q>Что делать, если у точки нет фото или описания?</q>
-<p>Можно начать с минимальными данными — название и адрес. Фото и описание можно добавить позже через кабинет.</p>
-</div>
+<details class="faq-item"><summary>Можно ли подключиться без Интернета в точке?</summary><p>Для работы приложения нужно соединение, но подключение по QR и заполнение данных можно сделать с телефона. Витрина и касса работают через интернет-подключение.</p></details>
+<details class="faq-item"><summary>Нужно ли платить за подключение?</summary><p>Нет. Подключение бесплатное, тариф СТАРТ — 0% комиссии до 30 000 ₽ или до конца следующего месяца.</p></details>
+<details class="faq-item"><summary>Что делать, если у точки нет фото или описания?</summary><p>Можно начать с минимальными данными — название и адрес. Фото и описание можно добавить позже через кабинет.</p></details>
 </section>
 
 <div class="meta-row"><span>Текст: LOVII · Статья 5</span> · <a href="../">Журнал LOVII</a> · <a href="../../business/">Бизнесу</a> · <a href="../../partners/">Партнёрам</a> · <a href="https://lovii.mobiap.com/" target="_blank" rel="noopener">Демо →</a></div>

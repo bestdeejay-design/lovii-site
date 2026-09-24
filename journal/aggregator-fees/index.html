@@ -44,7 +44,10 @@
 .journal-article .faq{margin-top:52px;padding-top:28px;border-top:2.5px solid var(--lv-line);}
 .journal-article .faq h2{margin-top:0;font-size:22px;font-weight:800;color:var(--lv-ink);}
 .journal-article .faq-item{margin-bottom:20px;}
-.journal-article .faq-item q{font-weight:700;color:var(--lv-ink);display:block;margin-bottom:6px;font-size:17px;}
+.journal-article .faq-item summary{font-weight:700;color:var(--lv-ink);cursor:pointer;margin-bottom:6px;font-size:17px;}
+.faq-item summary::after{content:"+";color:var(--lv-pink);font-weight:800;font-size:18px;flex:none;}
+.faq-item[open] summary::after{content:"–";}
+.journal-article .faq-item p{margin:0;padding:0 20px 18px;}
 .journal-article .author-sign{margin-top:48px;padding-top:24px;border-top:1.5px solid var(--lv-line);font-size:15px;color:var(--lv-muted);}
 .journal-article .author-sign b{color:var(--lv-ink);font-weight:700;}
 .journal-article .meta-row{display:flex;gap:16px;align-items:center;font-size:13px;color:var(--lv-muted);margin-top:36px;padding-top:16px;border-top:1px solid var(--lv-line);flex-wrap:wrap;}
@@ -116,22 +119,10 @@
 
 <section class="faq" aria-label="Частые вопросы">
 <h2>Что спрашивают предприниматели</h2>
-<div class="faq-item">
-<q>Можно ли переехать с агрегатора без потери клиентов?</q>
-<p>Да. В LOVII клиент привязан к точке, не к площадке. Чек и данные остаются у вас, баллы работают в районе.</p>
-</div>
-<div class="faq-item">
-<q>Что входит в 10% нагрузки LOVII?</q>
-<p>Банк (3,16% карт / 0,7% СБП) + комиссия платформы по тарифу. Сплит пула 40/40/20 не увеличивает нагрузку — это распределение дохода.</p>
-</div>
-<div class="faq-item">
-<q>Есть ли абонентская плата на старте?</q>
-<p>Нет. СТАРТ — 0% до 30 000 ₽ или до конца следующего месяца. Без скрытых условий.</p>
-</div>
-<div class="faq-item">
-<q>Это гарантия доходности?</q>
-<p>Нет. Мы не обещаем сроки и не гарантируем доход. Мы даём честную математику — и это всё.</p>
-</div>
+<details class="faq-item"><summary>Можно ли переехать с агрегатора без потери клиентов?</summary><p>Да. В LOVII клиент привязан к точке, не к площадке. Чек и данные остаются у вас, баллы работают в районе.</p></details>
+<details class="faq-item"><summary>Что входит в 10% нагрузки LOVII?</summary><p>Банк (3,16% карт / 0,7% СБП) + комиссия платформы по тарифу. Сплит пула 40/40/20 не увеличивает нагрузку — это распределение дохода.</p></details>
+<details class="faq-item"><summary>Есть ли абонентская плата на старте?</summary><p>Нет. СТАРТ — 0% до 30 000 ₽ или до конца следующего месяца. Без скрытых условий.</p></details>
+<details class="faq-item"><summary>Это гарантия доходности?</summary><p>Нет. Мы не обещаем сроки и не гарантируем доход. Мы даём честную математику — и это всё.</p></details>
 </section>
 
 <div class="author-sign">

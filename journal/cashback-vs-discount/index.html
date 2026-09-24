@@ -39,7 +39,10 @@
 .journal-article .faq{margin-top:48px;padding-top:24px;border-top:2px solid var(--lv-line);}
 .journal-article .faq h2{margin-top:0;font-size:22px;}
 .journal-article .faq-item{margin-bottom:20px;}
-.journal-article .faq-item q{font-weight:700;color:var(--lv-ink);display:block;margin-bottom:6px;}
+.journal-article .faq-item summary{font-weight:700;color:var(--lv-ink);cursor:pointer;margin-bottom:6px;}
+.faq-item summary::after{content:"+";color:var(--lv-pink);font-weight:800;font-size:18px;flex:none;}
+.faq-item[open] summary::after{content:"–";}
+.journal-article .faq-item p{margin:0;padding:0 20px 18px;}
 .journal-article .meta-row{display:flex;gap:16px;align-items:center;font-size:13px;color:var(--lv-muted);margin-top:32px;padding-top:16px;border-top:1px solid var(--lv-line);flex-wrap:wrap;}
 .journal-article .meta-row a{color:var(--lv-pink);text-decoration:none;font-weight:600;}
 @media(max-width:640px){.journal-article{padding:24px 20px 64px;font-size:16px;}.journal-article h1{font-size:28px;}.journal-article .cta-band{padding:24px 20px;}.journal-article .calc-table{font-size:14px;}}
@@ -119,18 +122,9 @@
 
 <section class="faq" aria-label="Частые вопросы">
 <h2>Вопросы и ответы</h2>
-<div class="faq-item">
-<q>Почему комиссия берётся только с начисленного, а не с чека?</q>
-<p>По канону LOVII комиссия 25% взимается именно с суммы начисленного кэшбэка (например, 60 ₽ из 600 ₽ чека), а не со всей суммы чека. Это делает механизм прозрачным.</p>
-</div>
-<div class="faq-item">
-<q>Можно ли дать и кэшбэк, и скидку одновременно?</q>
-<p>Да — но тогда затраты суммируются. Конструктор лояльности позволяет комбинировать механики под задачу точки.</p>
-</div>
-<div class="faq-item">
-<q>Баллы сгорают?</q>
-<p>Нет. По канону LOVII баллы не сгорают и тратятся у всех точек района — это одно из преимуществ перед обычными программами лояльности.</p>
-</div>
+<details class="faq-item"><summary>Почему комиссия берётся только с начисленного, а не с чека?</summary><p>По канону LOVII комиссия 25% взимается именно с суммы начисленного кэшбэка (например, 60 ₽ из 600 ₽ чека), а не со всей суммы чека. Это делает механизм прозрачным.</p></details>
+<details class="faq-item"><summary>Можно ли дать и кэшбэк, и скидку одновременно?</summary><p>Да — но тогда затраты суммируются. Конструктор лояльности позволяет комбинировать механики под задачу точки.</p></details>
+<details class="faq-item"><summary>Баллы сгорают?</summary><p>Нет. По канону LOVII баллы не сгорают и тратятся у всех точек района — это одно из преимуществ перед обычными программами лояльности.</p></details>
 </section>
 
 <div class="meta-row"><span>Текст: LOVII · Статья 3</span> · <a href="../">Журнал LOVII</a> · <a href="../../business/">Бизнесу</a> · <a href="../../clients/">Покупателям</a></div>

@@ -28,7 +28,10 @@
 .journal-article .faq{margin-top:48px;padding-top:24px;border-top:2px solid var(--lv-line);}
 .journal-article .faq h2{margin-top:0;font-size:22px;}
 .journal-article .faq-item{margin-bottom:20px;}
-.journal-article .faq-item q{font-weight:700;color:var(--lv-ink);display:block;margin-bottom:6px;}
+.journal-article .faq-item summary{font-weight:700;color:var(--lv-ink);cursor:pointer;margin-bottom:6px;}
+.faq-item summary::after{content:"+";color:var(--lv-pink);font-weight:800;font-size:18px;flex:none;}
+.faq-item[open] summary::after{content:"–";}
+.journal-article .faq-item p{margin:0;padding:0 20px 18px;}
 .journal-article .meta-row{display:flex;gap:16px;align-items:center;font-size:13px;color:var(--lv-muted);margin-top:32px;padding-top:16px;border-top:1px solid var(--lv-line);flex-wrap:wrap;}
 .journal-article .meta-row a{color:var(--lv-pink);text-decoration:none;font-weight:600;}
 @media(max-width:640px){.journal-article{padding:24px 20px 64px;font-size:16px;}.journal-article h1{font-size:28px;}.journal-article .cta-band{padding:24px 20px;}.journal-article blockquote{font-size:18px;padding:20px 22px;}}
@@ -84,9 +87,9 @@
 
 <section class="faq" aria-label="Вопросы">
 <h2>Вопросы инвесторов</h2>
-<div class="faq-item"><q>Нужен ли капитал для начала?</q><p>Нет. Лицензия представителя — 599 ₽/мес — это статус, не вложение в точку. Вы можете начать с одной точки и расширяться, когда увидите спрос района.</p></div>
-<div class="faq-item"><q>Сколько точек нужно для масштаба?</q><p>Пилот: 50 точек, 7,2 млн ₽/мес. Но начать можно с одной — и расти вместе с районом.</p></div>
-<div class="faq-item"><q>Как не потерять контроль?</q><p>Платформа не владеет точкой. Вы собираете данные, связываете людей, помогаете — всё через прозрачную агентскую схему с банком-партнёром.</p></div>
+<details class="faq-item"><summary>Нужен ли капитал для начала?</summary><p>Нет. Лицензия представителя — 599 ₽/мес — это статус, не вложение в точку. Вы можете начать с одной точки и расширяться, когда увидите спрос района.</p></details>
+<details class="faq-item"><summary>Сколько точек нужно для масштаба?</summary><p>Пилот: 50 точек, 7,2 млн ₽/мес. Но начать можно с одной — и расти вместе с районом.</p></details>
+<details class="faq-item"><summary>Как не потерять контроль?</summary><p>Платформа не владеет точкой. Вы собираете данные, связываете людей, помогаете — всё через прозрачную агентскую схему с банком-партнёром.</p></details>
 </section>
 <div class="meta-row"><span>Текст: LOVII · Статья 11</span> · <a href="../">Журнал LOVII</a> · <a href="../../business/">Бизнесу</a> · <a href="../../investors/">Инвесторам</a> · <a href="https://lovii.mobiap.com/" target="_blank" rel="noopener">Демо →</a></div>
 <section aria-label="Читайте также" style="margin-top:48px;padding-top:24px;border-top:2px solid var(--lv-line);"><h2 style="font-size:20px;font-weight:800;margin-bottom:16px;">Читайте также</h2><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;"><a href="../rep-area/" style="text-decoration:none;color:inherit;background:var(--lv-soft);border:1px solid var(--lv-line);border-radius:10px;padding:16px;display:block;"><b style="font-size:15px;color:var(--lv-ink);">Представитель района</b><p style="font-size:13px;color:var(--lv-muted);margin:4px 0 0;">Подписка 599 ₽/мес — статус, а не абонентская плата</p></a><a href="../district-showcase/" style="text-decoration:none;color:inherit;background:var(--lv-soft);border:1px solid var(--lv-line);border-radius:10px;padding:16px;display:block;"><b style="font-size:15px;color:var(--lv-ink);">Витрина района</b><p style="font-size:13px;color:var(--lv-muted);margin:4px 0 0;">Пилот СПб · баллы 1:1 у всех точек района</p></a><a href="../be-first/" style="text-decoration:none;color:inherit;background:var(--lv-soft);border:1px solid var(--lv-line);border-radius:10px;padding:16px;display:block;"><b style="font-size:15px;color:var(--lv-ink);">Как быть первым</b><p style="font-size:13px;color:var(--lv-muted);margin:4px 0 0;">Первый представитель в городе · цена стоит цели</p></a></div></section>

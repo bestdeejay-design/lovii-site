@@ -37,7 +37,10 @@
 .journal-article .faq{margin-top:48px;padding-top:24px;border-top:2px solid var(--lv-line);}
 .journal-article .faq h2{margin-top:0;font-size:22px;}
 .journal-article .faq-item{margin-bottom:20px;}
-.journal-article .faq-item q{font-weight:700;color:var(--lv-ink);display:block;margin-bottom:6px;}
+.journal-article .faq-item summary{font-weight:700;color:var(--lv-ink);cursor:pointer;margin-bottom:6px;}
+.faq-item summary::after{content:"+";color:var(--lv-pink);font-weight:800;font-size:18px;flex:none;}
+.faq-item[open] summary::after{content:"–";}
+.journal-article .faq-item p{margin:0;padding:0 20px 18px;}
 .journal-article .meta-row{display:flex;gap:16px;align-items:center;font-size:13px;color:var(--lv-muted);margin-top:32px;padding-top:16px;border-top:1px solid var(--lv-line);flex-wrap:wrap;}
 .journal-article .meta-row a{color:var(--lv-pink);text-decoration:none;font-weight:600;}
 @media(max-width:640px){.journal-article{padding:24px 20px 64px;font-size:16px;}.journal-article h1{font-size:28px;}.journal-article .cta-band{padding:24px 20px;}}
@@ -100,18 +103,9 @@
 
 <section class="faq" aria-label="Частые вопросы">
 <h2>Вопросы и ответы</h2>
-<div class="faq-item">
-<q>Можно ли работать в LOVII как самозанятый?</q>
-<p>Да. Выплаты — по запросу от 3 000 ₽ без комиссии. Для точек с постоянным оборотом часто удобнее ИП или ООО.</p>
-</div>
-<div class="faq-item">
-<q>Нужна ли касса при любом режиме?</q>
-<p>Нет — в LOVII чек формирует платформа. Это работает для самозанятых, ИП и ООО одинаково.</p>
-</div>
-<div class="faq-item">
-<q>Какие документы нужны для подключения?</q>
-<p>Понадобятся регистрационные документы вашего режима — точный список смотрите в разделе «Бизнесу».</p>
-</div>
+<details class="faq-item"><summary>Можно ли работать в LOVII как самозанятый?</summary><p>Да. Выплаты — по запросу от 3 000 ₽ без комиссии. Для точек с постоянным оборотом часто удобнее ИП или ООО.</p></details>
+<details class="faq-item"><summary>Нужна ли касса при любом режиме?</summary><p>Нет — в LOVII чек формирует платформа. Это работает для самозанятых, ИП и ООО одинаково.</p></details>
+<details class="faq-item"><summary>Какие документы нужны для подключения?</summary><p>Понадобятся регистрационные документы вашего режима — точный список смотрите в разделе «Бизнесу».</p></details>
 </section>
 
 <div class="meta-row"><span>Текст: LOVII · Статья 4</span> · <a href="../">Журнал LOVII</a> · <a href="../../business/">Бизнесу</a> · <a href="https://lovii.mobiap.com/" target="_blank" rel="noopener">Демо →</a></div>
