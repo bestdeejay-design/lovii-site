@@ -965,3 +965,16 @@ html[data-theme="dark"] .logo-light-img { display: none; }
 .trust-logos > span b { color: var(--lv-ink); }
 .trust-logos > span .ico { width: var(--lv-icon-16); height: var(--lv-icon-16); color: var(--lv-dim); }
 .trust-logos .utm-badge { height: 24px; }
+
+/* ---------- Журнал: кнопка домой в разделы ---------- */
+.journal-home {
+  flex-shrink: 0; display: inline-flex; align-items: center; height: 40px; padding: 0 18px;
+  border-radius: var(--lv-r-pill); border: 1.5px solid var(--lv-hairline);
+  font-size: 14px; font-weight: 700; color: var(--lv-ink); text-decoration: none; white-space: nowrap;
+  transition: color .2s, border-color .2s;
+}
+.journal-home:hover { color: var(--lv-pink); border-color: var(--lv-pink); }
+.journal-home:active { transform: scale(.97); }
+@media (max-width: 560px) {
+  .journal-home { height: 36px; padding: 0 14px; font-size: 13px; }
+}
