@@ -19,8 +19,12 @@ on:
   workflow_dispatch:
     inputs:
       confirm:
-        description: 'Набери PUBLISH для деплоя на lovii.ru'
+        description: 'PUBLISH — деплой на lovii.ru | ROLLBACK — откат к тегу из поля tag'
         required: true
+      tag:
+        description: 'Только для ROLLBACK: тег вида prod-YYYYMMDD-HHMMSS'
+        required: false
+        default: ''
 
 jobs:
   publish:
@@ -81,3 +85,29 @@ jobs:
             git commit -m "chore(prod): sync from lovii-site@${STAGE_SHA}"
             git push origin main
           fi
+
+  rollback:
+    if: github.event.inputs.confirm == 'ROLLBACK'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout prod
+        uses: actions/checkout@v4
+        with:
+          repository: bestdeejay-design/lovii
+          ref: main
+          path: prod
+          fetch-depth: 0
+          fetch-tags: true
+          token: ${{ secrets.LOVII_PROD_SYNC_TOKEN }}
+
+      - name: Rollback to tag
+        working-directory: prod
+          TAG="${{ github.event.inputs.tag }}"
+          case "$TAG" in prod-*) ;; *) echo "::error::Тег должен начинаться с prod- (например prod-2026-09-24)"; exit 1;; esac
+          git rev-parse -q --verify "refs/tags/$TAG" >/dev/null || { echo "::error::Тег $TAG не найден в прод-репо"; exit 1; }
+          git config user.name "lovii-ci"
+          git config user.email "ci@lovii.ru"
+          git checkout "$TAG"
+          git checkout -B main
+          git push --force-with-lease origin main
+          echo "Rolled back prod to $TAG"
