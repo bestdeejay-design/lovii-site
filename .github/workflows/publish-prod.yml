@@ -24,7 +24,6 @@ on:
       tag:
         description: 'Только для ROLLBACK: тег вида prod-YYYYMMDD-HHMMSS'
         required: false
-        default: ''
 
 jobs:
   publish:
