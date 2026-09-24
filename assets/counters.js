@@ -20,4 +20,15 @@
     ssr: true, webvisor: true, clickmap: true, ecommerce: 'dataLayer',
     accurateTrackBounce: true, trackLinks: true
   });
+
+  /* ---------- Google Analytics 4: G-DVNNZ3Y7XH ---------- */
+  (function (w, d, src) {
+    for (var j = 0; j < d.scripts.length; j++) { if (d.scripts[j].src === src) return; }
+    w.dataLayer = w.dataLayer || [];
+    w.gtag = w.gtag || function () { w.dataLayer.push(arguments); };
+    var k = d.createElement('script'), a = d.getElementsByTagName('script')[0];
+    k.async = 1; k.src = src; a.parentNode.insertBefore(k, a);
+    w.gtag('js', new Date());
+    w.gtag('config', 'G-DVNNZ3Y7XH');
+  })(window, document, 'https://www.googletagmanager.com/gtag/js?id=G-DVNNZ3Y7XH');
 })();
