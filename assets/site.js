@@ -20,6 +20,11 @@
     var m = document.getElementById('metaTheme');
     if (m) m.setAttribute('content', t === 'dark' ? '#171219' : '#f64a8a');
   }
+  try {
+    var savedTheme = localStorage.getItem('lovii_theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : (prefersDark ? 'dark' : 'light'));
+  } catch (e) { applyTheme('light'); }
   var themeBtn = document.getElementById('themeBtn');
   if (themeBtn) themeBtn.addEventListener('click', function () {
     applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
