@@ -63,7 +63,7 @@ jobs:
       - name: Sync stage → prod
         run: |
           cd stage
-          for f in 404.html index.html robots.txt sitemap.xml og-image.png manifest.webmanifest favicon.svg favicon.png logo.svg logo-dark.svg lovii-icon.svg lovii-icon-180.png lovii-icon-192.png lovii-icon-512.png; do
+          for f in 404.html index.html robots.txt sitemap.xml og-image.png manifest.webmanifest favicon.svg favicon.png logo.svg logo-dark.svg lovii-icon.svg lovii-icon-180.png lovii-icon-192.png lovii-icon-512.png google*.html; do
             [ -e "$f" ] && cp "$f" ../prod/"$f"
           done
           for d in ambassadors business clients investors partners roadmap assets; do
