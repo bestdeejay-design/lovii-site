@@ -1,0 +1,83 @@
+# Публикация стейджа (этот репо) на прод (bestdeejay-design/lovii → lovii.ru).
+#
+# Правило: прод обновляется ТОЛЬКО этим workflow и ТОЛЬКО вручную
+# (Actions → publish-prod → Run workflow → confirm=PUBLISH).
+# Прямые пуши в bestdeejay-design/lovii@main запрещены.
+#
+# Требуется секрет LOVII_PROD_SYNC_TOKEN (PAT classic, scope repo) в настройках
+# ЭТОГО репо: Settings → Secrets → Actions. Без него workflow падает с подсказкой.
+#
+# Что делает:
+# 1. Тегирует текущий прод (prod-YYYYMMDD-HHMMSS) — история сохраняется автоматически.
+# 2. Копирует контент сайта (без dev-мусора) поверх main прода. Без --delete:
+#    CNAME, .github, docs/, White Paper и прочие файлы прода не трогаются.
+# 3. Коммитит и пушит в main прода → GitHub Pages пересобирает lovii.ru.
+
+name: publish-prod
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Набери PUBLISH для деплоя на lovii.ru'
+        required: true
+
+jobs:
+  publish:
+    if: github.event.inputs.confirm == 'PUBLISH'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check secret
+        run: |
+          if [ -z "${{ secrets.LOVII_PROD_SYNC_TOKEN }}" ]; then
+            echo "::error::Нет секрета LOVII_PROD_SYNC_TOKEN (PAT classic, scope repo). Добавь в Settings → Secrets → Actions этого репо."
+            exit 1
+          fi
+
+      - name: Checkout stage
+        uses: actions/checkout@v4
+        with:
+          path: stage
+
+      - name: Checkout prod
+        uses: actions/checkout@v4
+        with:
+          repository: bestdeejay-design/lovii
+          ref: main
+          path: prod
+          token: ${{ secrets.LOVII_PROD_SYNC_TOKEN }}
+
+      - name: Archive current prod
+        working-directory: prod
+        run: |
+          git config user.name "lovii-ci"
+          git config user.email "ci@lovii.ru"
+          TAG="prod-$(date -u +%Y%m%d-%H%M%S)"
+          git tag "$TAG"
+          git push origin "tag $TAG"
+          echo "Archived prod as $TAG"
+
+      - name: Sync stage → prod
+        run: |
+          cd stage
+          for f in 404.html index.html robots.txt sitemap.xml og-image.png manifest.webmanifest favicon.svg favicon.png logo.svg logo-dark.svg lovii-icon.svg lovii-icon-180.png lovii-icon-192.png lovii-icon-512.png; do
+            [ -e "$f" ] && cp "$f" ../prod/"$f"
+          done
+          for d in ambassadors business clients investors partners roadmap assets; do
+            [ -d "$d" ] && { mkdir -p ../prod/"$d"; rsync -av --delete --exclude='.DS_Store' "$d"/ ../prod/"$d"/; }
+          done
+          echo "--- synced diff ---"
+          cd ../prod && git status --short | head -30
+
+      - name: Commit and push prod
+        working-directory: prod
+        env:
+          STAGE_SHA: ${{ github.sha }}
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes — prod already in sync."
+          else
+            git commit -m "chore(prod): sync from lovii-site@${STAGE_SHA}"
+            git push origin main
+          fi

@@ -61,16 +61,23 @@
 - `<meta name="robots" content="noindex, follow">` на всех страницах;
 - canonical/OG/sitemap уже указывают на финальные адреса `lovii.ru`.
 
-## Чек-лист Дня X
+## Stage → Prod (введено 2026-09-24, вместо ручного Дня X)
 
-1. DNS lovii.ru → GitHub Pages (или перенос содержимого в репо `lovii`).
-2. `robots.txt`: убрать `Disallow`, оставить `Sitemap: https://lovii.ru/sitemap.xml`.
-3. Снять `noindex` (генерация: `scripts/build_lovii_site.py`, флаг `--prod`).
-4. Проверить, что динамический `<base>` в 404.html перешёл на `/`
-   (детект `/lovii-site/` просто не сработает — правок не требует).
-5. Подключить `assets/lovii.css` у существующего lovii.ru остаётся снапшотом —
-   синхронизация через lovii-design (`sync-lovii-css.py`, TARGETS уже включает lovii-site).
-6. Проверить OG-карточку и 404, перелогинить Search Console.
+- Этот репо — **стенд**. Прод — `bestdeejay-design/lovii` (`main`, домен lovii.ru).
+- Публикация — **только** по команде владельца «публикуем на прод»:
+  Actions → `publish-prod` → Run workflow → confirm=`PUBLISH`.
+  Workflow тегирует текущий прод (`prod-*`) и копирует контент (CNAME, docs,
+  White Paper прода не трогает). Нужен секрет `LOVII_PROD_SYNC_TOKEN`.
+- Прямые пуши в прод запрещены. Детали — в `AGENTS.md`.
+
+## Чек-лист Дня X (архивный, выполнен через CI)
+
+1. ~~DNS lovii.ru → GitHub Pages~~ — готово (домен на Pages).
+2. ~~`robots.txt`: убрать `Disallow`~~ — готово (Allow + Sitemap).
+3. ~~Снять `noindex`~~ — готово (везде `index, follow`).
+4. Динамический `<base>` в 404.html — переключается сам.
+5. `assets/lovii.css` — снапшот, синхронизация через lovii-design.
+6. После первой CI-публикации: проверить OG-карточку и 404, перелогинить Search Console.
 
 ## Проверки перед публикацией
 
