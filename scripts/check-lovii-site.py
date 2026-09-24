@@ -31,7 +31,8 @@ for m in re.finditer(r"([^{}]*\.ico[^{}]*)\{([^}]*)\}", no_comments):
         continue
     w = re.search(r"width:\s*([0-9]+)px", body)
     if w and int(w.group(1)) not in STEPS:
-        off.append(f"{re.sub(r'\s+',' ',sel)[:34]} = {w.group(1)}px")
+        clean = re.sub(r"\s+", " ", sel)[:34]
+        off.append(f"{clean} = {w.group(1)}px")
 if off:
     problems.append(f"размеры иконок вне ступеней: {len(off)} → " + "; ".join(off[:4]))
 
