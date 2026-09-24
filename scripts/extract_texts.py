@@ -4,7 +4,7 @@ import json, re
 from html.parser import HTMLParser
 from pathlib import Path
 
-ROOT = Path('/Users/best/Projects/lovii-site')
+ROOT = Path(__file__).resolve().parent.parent
 PAGES = [
     ('Главная', 'index.html'),
     ('Покупателям', 'clients/index.html'),
@@ -14,6 +14,18 @@ PAGES = [
     ('Инвесторам', 'investors/index.html'),
     ('Дорожная карта', 'roadmap/index.html'),
     ('Страница 404', '404.html'),
+    ('Журнал', 'journal/index.html'),
+    ('Журнал — комиссии', 'journal/aggregator-fees/index.html'),
+    ('Журнал — касса', 'journal/fiscal-54fz/index.html'),
+    ('Журнал — лояльность', 'journal/cashback-vs-discount/index.html'),
+    ('Журнал — налоги', 'journal/selfemployed-vs-ip/index.html'),
+    ('Журнал — запуск', 'journal/qr-onboarding/index.html'),
+    ('Журнал — район', 'journal/district-showcase/index.html'),
+    ('Журнал — тарифы', 'journal/choose-tariff/index.html'),
+    ('Журнал — представитель', 'journal/rep-area/index.html'),
+    ('Журнал — уход с агрегатора', 'journal/left-aggregator/index.html'),
+    ('Журнал — месяц на витрине', 'journal/vitrina-result/index.html'),
+    ('Журнал — инвестиции', 'journal/local-investment/index.html'),
 ]
 SKIP = {'script', 'style', 'svg', 'head', 'title', 'noscript', 'template'}
 STRUCTURAL = {'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li', 'a', 'button',
