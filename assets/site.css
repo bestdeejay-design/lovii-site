@@ -527,7 +527,8 @@ html[data-theme="dark"] .form-err { color: var(--lv-pink); }
 /* ---------- §16 Адаптив ---------- */
 @media (max-width: 999px) {
   .nav, .header-cta { display: none; }
-  .burger { display: flex; }
+  .burger { display: flex; margin-left: 0; }
+  .theme-btn { margin-left: auto; }
   .l-hero { padding: 52px 0 64px; }
   .sec { padding: 52px 0; }
 }
