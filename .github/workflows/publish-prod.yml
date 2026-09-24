@@ -57,7 +57,7 @@ jobs:
           git config user.email "ci@lovii.ru"
           TAG="prod-$(date -u +%Y%m%d-%H%M%S)"
           git tag "$TAG"
-          git push origin "tag $TAG"
+          git push origin tag "$TAG"
           echo "Archived prod as $TAG"
 
       - name: Sync stage → prod
