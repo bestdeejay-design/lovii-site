@@ -365,9 +365,11 @@ td.hl { color: var(--lv-tiffany-text); font-weight: 700; }
 .st-chip .ico { width: var(--lv-icon-16); height: var(--lv-icon-16); color: var(--lv-tiffany); flex: none; }
 .st-chip.stage { border-color: color-mix(in srgb, var(--lv-tiffany) 32%, transparent); background: var(--lv-soft-tiffany); color: var(--lv-tiffany-text); font-weight: 700; }
 .st-chip.stage .ico { color: var(--lv-tiffany-text); }
-.st-chip.live { border: 0; background: var(--lv-pink); color: var(--lv-white); font-weight: 800; box-shadow: var(--lv-shadow-soft); }
-.st-chip.live .lv-dot { background: var(--lv-card); }
-.st-chip.live .lv-dot::after { content: ""; }
+/* Статусы — один язык цвета с каталогом фич: готово = тиффани, в работе = gold.
+   Пары текст/заливка: 5.2 / 4.5 (светлая), 6.5 / 6.3 (тёмная). */
+.st-chip.done { border-color: color-mix(in srgb, var(--lv-tiffany) 62%, var(--lv-tiffany-text)); background: var(--lv-tiffany); color: var(--lv-ink-deep); font-weight: 700; }
+.st-chip.live { border: 1px solid color-mix(in srgb, var(--lv-gold) 55%, var(--lv-gold-text)); background: var(--lv-soft-gold); color: color-mix(in srgb, var(--lv-gold-text) 90%, var(--lv-ink)); font-weight: 700; box-shadow: none; }
+.st-chip.live .lv-dot { background: var(--lv-gold-text); }
 
 .stat-card { background: var(--lv-card); border: 1px solid var(--lv-line); border-radius: var(--lv-r-lg); box-shadow: var(--lv-shadow-soft); padding: 20px; }
 .stat-card .v { font-size: 27px; font-weight: 800; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
@@ -597,8 +599,7 @@ ol.tl .tl-item p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--
 .log-item { display: flex; gap: 12px; align-items: flex-start; padding: 15px 0; border-bottom: 1px solid var(--lv-line); }
 .log-item:last-child { border-bottom: 0; }
 .log-date { flex: none; width: 132px; font-size: 13px; font-weight: 800; color: var(--lv-dim); padding-top: 2px; }
-.log-tag { flex: none; }
-.log-tag.st-chip.live { border: 0; background: var(--lv-pink); color: var(--lv-white); font-weight: 800; }
+.log-tag { flex: none; min-width: 104px; justify-content: center; }
 .log-item h3 { margin: 0 0 3px; font-size: 15px; color: var(--lv-ink); }
 .log-item p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--lv-dim); }
 @media (max-width: 640px) {
