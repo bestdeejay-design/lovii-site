@@ -629,18 +629,17 @@ ol.tl .tl-item p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--
 .shot-card img { display: block; width: 100%; height: auto; }
 .shot-cap { max-width: 980px; margin: 12px auto 0; font-size: 14px; color: var(--lv-dim); text-align: center; }
 .shot-cap a { color: var(--lv-pink-dark); font-weight: 600; }
-/* Карточки — по содержимому. При stretch короткая категория тянулась до
-   соседа и давала пустой низ цвета --lv-card: белая плита до 152 px.
-   В grid «по содержимому» (align-items: start) появляется лестница —
-   зазоры 40–160 px вместо 10 (замерено: 1440 — 111/100/160/40/118 px,
-   768 — 53/100/160/59/81 px). Поэтому две независимые колонки: карточки
-   пакуются по содержимому сверху вниз, зазор всегда ровно 10 px.
+/* Парный grid 2×N: порядок категорий читается парами (1|2, 3|4, …),
+   зазор всегда ровно 10 px — без masonry-лестницы и без независимых колонок.
+   Пустого низа у короткой карточки не видно не потому, что он спрятан
+   раскладкой, а потому, что заливка карточки = заливке секции
+   (.sec.t-surface → --lv-surface): низ той же высоты, что и воздух вокруг.
+   Структуру держит обводка 1 px --lv-line по контуру пары.
    Разметка, DOM-порядок и разворачивание карточек не меняются. */
-.feat-plan { columns: 2; column-gap: 10px; max-width: 980px; margin: 0 auto; }
-.feat-plan > details.fp { break-inside: avoid; margin: 0 0 10px; }
+.feat-plan { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 980px; margin: 0 auto; }
 details.fp {
   border: 1px solid var(--lv-line); border-radius: var(--lv-r-md);
-  background: var(--lv-card); overflow: hidden;
+  background: var(--lv-surface); overflow: hidden;
 }
 details.fp summary {
   list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
@@ -727,7 +726,7 @@ html[data-theme="dark"] .fp-chip.done {
 .fp li.is-hidden { display:none; }
 .fp[hidden] { display:none; }
 @media (max-width: 760px) {
-  .feat-plan { columns: 1; }
+  .feat-plan { grid-template-columns: 1fr; }
   .feat-toolbar { padding: 12px 13px; gap: 10px 14px; }
   .feat-filter { padding: 0 15px; }
   .demo-link { max-width: 100%; }
