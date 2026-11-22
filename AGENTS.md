@@ -8,11 +8,12 @@
 - Прод — отдельный репо `bestdeejay-design/lovii` (ветка `main`, домен lovii.ru).
 - **ПРЯМЫЕ пуши в прод ЗАПРЕЩЕНЫ** — руками, скриптами, агентами. Без исключений.
 - Публикация на прод — **только** по явной команде владельца «публикуем на прод»:
-  Actions этого репо → `publish-prod` → Run workflow → confirm=`PUBLISH`.
-  Workflow сам тегирует текущий прод (`prod-*`) и копирует контент.
+  `gh workflow run sync-from-stage --repo bestdeejay-design/lovii -f confirm=PUBLISH`.
+  Workflow живёт в прод-репо, читает этот репо и пишет своим `GITHUB_TOKEN` —
+  PAT и секреты не нужны (прежний `publish-prod` с PAT удалён: отзыв токена
+  убивал публикацию).
+  Откат: `... -f confirm=ROLLBACK -f tag=prod-YYYYMMDD-HHMMSS`.
 - Архив истории прода: ветки `archive/*` и теги `prod-*` в репо `lovii`. Не удалять.
-- Для публикации нужен секрет `LOVII_PROD_SYNC_TOKEN` (PAT classic, scope `repo`)
-  в Settings → Secrets → Actions этого репо. Создаёт владелец один раз.
 
 ## Гейт после правок (перед каждым коммитом)
 
