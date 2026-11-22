@@ -631,8 +631,8 @@ ol.tl .tl-item p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--
 .shot-cap a { color: var(--lv-pink-dark); font-weight: 600; }
 .feat-plan { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 980px; margin: 0 auto; }
 details.fp {
-  border: 1px solid var(--lv-hairline); border-radius: var(--lv-r-md);
-  background: var(--lv-surface); overflow: hidden;
+  border: 1px solid var(--lv-line); border-radius: var(--lv-r-md);
+  background: var(--lv-card); overflow: hidden;
 }
 details.fp summary {
   list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
@@ -645,27 +645,85 @@ details.fp[open] summary::after { content: "–"; }
 details.fp summary:hover { background: var(--lv-mist-pink); }
 details.fp ul { list-style: none; margin: 0; padding: 2px 16px 14px; display: grid; gap: 8px; }
 details.fp li { display: flex; align-items: baseline; gap: 10px; font-size: 14px; line-height: 1.45; color: var(--lv-ink); }
+/* Бейджи статусов: один язык цвета с пилюлями-фильтрами ниже.
+   готово = тиффани, в работе = gold (цвет «в работе» из прежней легенды),
+   в плане = нейтральный серый. Все пары текст/заливка — ≥ 4.5:1 в двух темах. */
 .fp-chip {
-  flex-shrink: 0; font-size: 11px; font-weight: 700; padding: 2px 8px;
-  border-radius: var(--lv-r-pill); background: color-mix(in srgb, var(--lv-dim) 10%, transparent);
-  color: var(--lv-dim); white-space: nowrap;
+  flex-shrink: 0; font-size: 11px; font-weight: 700; padding: 2px 9px;
+  border-radius: var(--lv-r-pill); border: 1px solid var(--lv-line);
+  background: var(--lv-grey-soft); color: var(--lv-ink); white-space: nowrap;
 }
-.fp-chip.live { background: var(--lv-mist-pink); color: var(--lv-pink-dark); }
-.fp-chip.done { background: var(--lv-tiffany); color: var(--lv-ink); }
-.feat-toolbar { display:flex; flex-wrap:wrap; gap:12px 18px; align-items:center; justify-content:space-between; margin:20px 0 2px; }
-.feat-filters { display:flex; flex-wrap:wrap; gap:8px; }
-.feat-filter { appearance:none; border:1px solid var(--lv-line); background:var(--lv-card); color:var(--lv-dim); border-radius:var(--lv-r-pill); min-height:36px; padding:0 14px; font:inherit; font-size:13px; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:7px; transition:background-color .2s,border-color .2s,color .2s; }
-.feat-filter b { color:var(--lv-ink); font-weight:800; }
-.feat-filter:hover { border-color: color-mix(in srgb, var(--lv-pink) 40%, var(--lv-line)); }
-.feat-filter.is-active { background: var(--lv-ink); border-color: var(--lv-ink); color: var(--lv-card); }
-.feat-filter.is-active b { color: var(--lv-card); }
-.feat-filter:focus-visible { outline:3px solid color-mix(in srgb, var(--lv-pink) 50%, transparent); outline-offset:2px; }
-.feat-shown { margin:0; font-size:12.5px; color:var(--lv-dim); }
+.fp-chip.done {
+  background: var(--lv-tiffany); color: var(--lv-ink);
+  border-color: color-mix(in srgb, var(--lv-tiffany) 62%, var(--lv-tiffany-text));
+}
+.fp-chip.live {
+  background: var(--lv-soft-gold);
+  color: color-mix(in srgb, var(--lv-gold-text) 90%, var(--lv-ink));
+  border-color: color-mix(in srgb, var(--lv-gold) 55%, var(--lv-gold-text));
+}
+/* Тёмная тема: сплошная тиффани со светлым текстом даёт 2.4:1 —
+   переводим «готово» на пару soft-заливка + tiffany-text (6.5:1). */
+html[data-theme="dark"] .fp-chip.done {
+  background: var(--lv-soft-tiffany); color: var(--lv-tiffany-text);
+  border-color: color-mix(in srgb, var(--lv-tiffany) 45%, transparent);
+}
+
+/* Тулкит фильтров — отдельная панель на .t-surface: пилюли не сливаются
+   ни с фоном секции, ни с карточками категорий под ними. */
+.feat-toolbar {
+  display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; justify-content: space-between;
+  margin: 22px 0 18px; padding: 13px 15px;
+  background: var(--lv-card); border: 1px solid var(--lv-line);
+  border-radius: var(--lv-r-lg); box-shadow: var(--lv-shadow-soft);
+}
+.feat-filters { display: flex; flex-wrap: wrap; gap: 10px; }
+.feat-filter {
+  --ff-bg: var(--lv-card); --ff-fg: var(--lv-dim); --ff-line: var(--lv-line-strong);
+  appearance: none; display: inline-flex; align-items: center; gap: 8px;
+  min-height: 40px; padding: 0 16px; white-space: nowrap;
+  border: 1px solid var(--ff-line); border-radius: var(--lv-r-pill);
+  background: var(--ff-bg); color: var(--ff-fg);
+  font: inherit; font-size: 13px; font-weight: 700; letter-spacing: .01em;
+  cursor: pointer;
+  transition: background-color .2s, border-color .2s, color .2s, box-shadow .2s;
+}
+/* счётчик наследует цвет пилюли: глобальное b {color: ink} — не для фильтров */
+.feat-filter b { color: inherit; font-weight: 800; font-variant-numeric: tabular-nums; }
+.feat-filter[data-filter="all"] {
+  --ff-bg: color-mix(in srgb, var(--lv-ink) 8%, var(--lv-card)); --ff-fg: var(--lv-ink);
+}
+.feat-filter[data-filter="done"] {
+  --ff-bg: var(--lv-soft-tiffany); --ff-fg: var(--lv-tiffany-text);
+  --ff-line: color-mix(in srgb, var(--lv-tiffany) 62%, var(--lv-tiffany-text));
+}
+.feat-filter[data-filter="notdone"] {
+  --ff-bg: var(--lv-card);
+  --ff-fg: color-mix(in srgb, var(--lv-dim) 80%, var(--lv-ink));
+}
+.feat-filter:hover { border-color: var(--ff-fg); }
+/* Актив: сплошная заливка + рамка по цвету текста + внутренняя обводка.
+   Пара текст/заливка у каждого варианта ≥ 4.5:1 в обеих темах. */
+.feat-filter.is-active {
+  border-color: currentColor;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 45%, transparent), var(--lv-shadow-soft);
+}
+.feat-filter.is-active b { font-weight: 900; }
+.feat-filter[data-filter="all"].is-active { --ff-bg: var(--lv-ink); --ff-fg: var(--lv-card); }
+.feat-filter[data-filter="done"].is-active { --ff-bg: var(--lv-tiffany); --ff-fg: var(--lv-ink-deep); }
+.feat-filter[data-filter="notdone"].is-active { --ff-bg: var(--lv-dim); --ff-fg: var(--lv-card); }
+.feat-filter:focus-visible { outline: 2px solid var(--lv-pink); outline-offset: 2px; }
+.feat-shown { margin: 0; font-size: 12.5px; color: var(--lv-dim); }
 .fp li.is-hidden { display:none; }
 .fp[hidden] { display:none; }
 @media (max-width: 760px) {
   .feat-plan { grid-template-columns: 1fr; }
+  .feat-toolbar { padding: 12px 13px; gap: 10px 14px; }
+  .feat-filter { padding: 0 15px; }
   .demo-link { max-width: 100%; }
+}
+@media (max-width: 400px) {
+  .feat-filter { padding: 0 12px; font-size: 12.5px; }
 }
 
 /* ---------- §20 Продуктовые улучшения 2026: траст, калькуляторы, sticky-cta ---------- */

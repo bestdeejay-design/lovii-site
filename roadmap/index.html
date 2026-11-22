@@ -82,57 +82,9 @@
 <button class="up-btn" id="upBtn" type="button" aria-label="Наверх"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#i-arrow-up"></use></svg></button>
 <div class="sticky-cta" id="stickyCta"><span class="txt"><b>Дорожная карта LOVII</b>Подпишись на обновления</span><a class="btn btn-primary" href="mailto:hello@lovii.ru?subject=LOVII%20—%20подписка%20на%20обновления" data-analytics="sticky_roadmap">Подписаться</a></div>
 <script src="../assets/site.js" defer></script>
+<script src="../assets/roadmap-features.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"LOVII","url":"https://lovii.ru/","logo":"https://lovii.ru/logo.svg","description":"Платформа локальной экономики: витрина района, лояльность 1 балл = 1 ₽, честный сплит 40/40/20","sameAs":["https://t.me/loviiru","https://vk.ru/loviiru","https://max.ru/channel_lovii"],"foundingDate":"2025-09","address":{"@type":"PostalAddress","addressLocality":"Санкт-Петербург","addressCountry":"RU"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://lovii.ru/"},{"@type":"ListItem","position":2,"name":"Дорожная карта","item":"https://lovii.ru/roadmap/"}]}</script>
 
-<script>
-(() => {
-  const root = document.getElementById('features-plan');
-  if (!root) return;
-  const items = Array.from(root.querySelectorAll('.fp li[data-status]'));
-  const cats = Array.from(root.querySelectorAll('.fp'));
-  const buttons = Array.from(root.querySelectorAll('.feat-filter'));
-  const shown = root.querySelector('[data-feat-shown]');
-  const counts = { all: items.length, done: 0, work: 0, plan: 0 };
-  items.forEach(li => { counts[li.dataset.status] = (counts[li.dataset.status] || 0) + 1; });
-  const notdone = counts.work + counts.plan;
-  const set = (sel, val) => root.querySelectorAll(sel).forEach(el => { el.textContent = val; });
-  set('[data-count="all"]', counts.all);
-  set('[data-count="done"]', counts.done);
-  set('[data-count="notdone"]', notdone);
-  set('[data-feat-total]', counts.all);
-  set('[data-feat-done-text]', counts.done);
-  set('[data-feat-work-text]', counts.work);
-  set('[data-feat-plan-text]', counts.plan);
-  const statDone = document.querySelector('[data-feat-done-stat]');
-  const statAhead = document.querySelector('[data-feat-ahead-stat]');
-  if (statDone) statDone.textContent = counts.done;
-  if (statAhead) statAhead.textContent = notdone;
-  const planBtn = root.querySelector('.feat-filter[data-filter="notdone"]');
-  if (planBtn) planBtn.title = `Включая ${counts.work} фич в работе`;
-  const apply = (filter) => {
-    let visible = 0;
-    items.forEach(li => {
-      const ok = filter === 'all' || (filter === 'done' ? li.dataset.status === 'done' : li.dataset.status !== 'done');
-      li.classList.toggle('is-hidden', !ok);
-      if (ok) visible++;
-    });
-    cats.forEach(cat => {
-      const n = cat.querySelectorAll('li[data-status]:not(.is-hidden)').length;
-      const count = cat.querySelector('[data-cat-count]');
-      if (count) count.textContent = n;
-      cat.hidden = n === 0;
-    });
-    buttons.forEach(btn => {
-      const on = btn.dataset.filter === filter;
-      btn.classList.toggle('is-active', on);
-      btn.setAttribute('aria-pressed', String(on));
-    });
-    if (shown) shown.textContent = `Показано ${visible} из ${items.length}`;
-  };
-  buttons.forEach(btn => btn.addEventListener('click', () => apply(btn.dataset.filter)));
-  apply('all');
-})();
-</script>
 </body>
 </html>
