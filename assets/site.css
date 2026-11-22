@@ -629,7 +629,15 @@ ol.tl .tl-item p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--
 .shot-card img { display: block; width: 100%; height: auto; }
 .shot-cap { max-width: 980px; margin: 12px auto 0; font-size: 14px; color: var(--lv-dim); text-align: center; }
 .shot-cap a { color: var(--lv-pink-dark); font-weight: 600; }
-.feat-plan { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 980px; margin: 0 auto; }
+/* Карточки — по содержимому. При stretch короткая категория тянулась до
+   соседа и давала пустой низ цвета --lv-card: белая плита до 152 px.
+   В grid «по содержимому» (align-items: start) появляется лестница —
+   зазоры 40–160 px вместо 10 (замерено: 1440 — 111/100/160/40/118 px,
+   768 — 53/100/160/59/81 px). Поэтому две независимые колонки: карточки
+   пакуются по содержимому сверху вниз, зазор всегда ровно 10 px.
+   Разметка, DOM-порядок и разворачивание карточек не меняются. */
+.feat-plan { columns: 2; column-gap: 10px; max-width: 980px; margin: 0 auto; }
+.feat-plan > details.fp { break-inside: avoid; margin: 0 0 10px; }
 details.fp {
   border: 1px solid var(--lv-line); border-radius: var(--lv-r-md);
   background: var(--lv-card); overflow: hidden;
@@ -650,7 +658,7 @@ details.fp li { display: flex; align-items: baseline; gap: 10px; font-size: 14px
    в плане = нейтральный серый. Все пары текст/заливка — ≥ 4.5:1 в двух темах. */
 .fp-chip {
   flex-shrink: 0; font-size: 11px; font-weight: 700; padding: 2px 9px;
-  border-radius: var(--lv-r-pill); border: 1px solid var(--lv-line);
+  border-radius: var(--lv-r-pill); border: 1px solid var(--lv-line-strong);
   background: var(--lv-grey-soft); color: var(--lv-ink); white-space: nowrap;
 }
 .fp-chip.done {
@@ -666,7 +674,9 @@ details.fp li { display: flex; align-items: baseline; gap: 10px; font-size: 14px
    переводим «готово» на пару soft-заливка + tiffany-text (6.5:1). */
 html[data-theme="dark"] .fp-chip.done {
   background: var(--lv-soft-tiffany); color: var(--lv-tiffany-text);
-  border-color: color-mix(in srgb, var(--lv-tiffany) 45%, transparent);
+  /* обводка 45%-тиффани давала 2.41:1 к карточке — силуэт терялся;
+     берём тот же токен, что и текст бейджа (4.46:1) */
+  border-color: color-mix(in srgb, var(--lv-tiffany-text) 65%, transparent);
 }
 
 /* Тулкит фильтров — отдельная панель на .t-surface: пилюли не сливаются
@@ -717,7 +727,7 @@ html[data-theme="dark"] .fp-chip.done {
 .fp li.is-hidden { display:none; }
 .fp[hidden] { display:none; }
 @media (max-width: 760px) {
-  .feat-plan { grid-template-columns: 1fr; }
+  .feat-plan { columns: 1; }
   .feat-toolbar { padding: 12px 13px; gap: 10px 14px; }
   .feat-filter { padding: 0 15px; }
   .demo-link { max-width: 100%; }
