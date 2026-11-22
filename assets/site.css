@@ -651,6 +651,7 @@ details.fp li { display: flex; align-items: baseline; gap: 10px; font-size: 14px
   color: var(--lv-dim); white-space: nowrap;
 }
 .fp-chip.live { background: var(--lv-mist-pink); color: var(--lv-pink-dark); }
+.fp-chip.done { background: var(--lv-soft-tiffany); color: var(--lv-tiffany-text); }
 @media (max-width: 760px) {
   .feat-plan { grid-template-columns: 1fr; }
   .demo-link { max-width: 100%; }
