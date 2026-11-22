@@ -631,14 +631,14 @@ ol.tl .tl-item p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--
 .shot-cap a { color: var(--lv-pink-dark); font-weight: 600; }
 /* Парный grid 2×N: порядок категорий читается парами (1|2, 3|4, …),
    зазор всегда ровно 10 px — без masonry-лестницы и без независимых колонок.
-   Пустого низа у короткой карточки не видно не потому, что он спрятан
-   раскладкой, а потому, что заливка карточки = заливке секции
-   (.sec.t-surface → --lv-surface): низ той же высоты, что и воздух вокруг.
-   Структуру держит обводка 1 px --lv-line по контуру пары.
+   Карточка — как до PR: заливка = заливке секции (.sec.t-surface → --lv-surface),
+   обводка — волосяная --lv-hairline. Поэтому пустого низа у короткой карточки
+   не видно: он того же тона, что и воздух вокруг, и рамки под контентом нет.
+   Обводку не поднимать до --lv-line: линия обводит пустоту и рисует плиту.
    Разметка, DOM-порядок и разворачивание карточек не меняются. */
 .feat-plan { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 980px; margin: 0 auto; }
 details.fp {
-  border: 1px solid var(--lv-line); border-radius: var(--lv-r-md);
+  border: 1px solid var(--lv-hairline); border-radius: var(--lv-r-md);
   background: var(--lv-surface); overflow: hidden;
 }
 details.fp summary {
